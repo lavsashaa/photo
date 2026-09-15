@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Александра Левина — Фотограф</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="header">
+    <a href="index.html" class="logo">LAVSASHA</a>
+
+    <div class="anchor-links">
+        <a href="#about">О себе</a>
+        <a href="#services">Услуги</a>
+    </div>
+
+    <nav>
+        <ul id="menu">
+            <li><a href="index.html" class="active">Главная</a></li>
+            <li><a href="portfolio.html">Портфолио</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+        </ul>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>LOVE <em>PHOTOS</em><br>ROCK 'N' ROLL</h1>
+        <p>Индивидуальные съемки</p>
+        <a href="portfolio.html" class="btn">Смотреть работы</a>
+    </div>
+</section>
+
+<section id="about" style="padding-top: 160px;">
+    <div class="about-grid">
+        <div class="about-text">
+            <div class="section-title" style="text-align:left;">О себе</div>
+            <h2>Привет, я Анна</h2>
+            <p>Уже более 8 лет я занимаюсь фотографией и за это время сняла более 300 свадеб и 500 портретных съёмок по всей России и Европе.</p>
+            <p>Мой стиль — это естественность, тёплый свет и живые эмоции. Я не люблю постановочные кадры — мне важно поймать настоящие чувства и сохранить их навсегда.</p>
+            <p>Работаю на плёнку и цифру, люблю пленочную зернистость и мягкие тона.</p>
+
+        </div>
+    </div>
+</section>
+
+<section id="services" style="background: var(--bg-light);">
+    <div class="section-title">Услуги</div>
+    <h2 class="section-heading">Что я предлагаю</h2>
+
+    <div class="services">
+        <div class="service-card">
+            <h3>Свадебная съёмка</h3>
+            <p>Полный день от сборов до первого танца. 400+ обработанных фотографий.</p>
+            <div class="service-price">от 80 000 ₽</div>
+        </div>
+        <div class="service-card">
+            <h3>Love Story</h3>
+            <p>Парная съёмка на природе или в городе. 2-3 часа, 100 фото.</p>
+            <div class="service-price">от 25 000 ₽</div>
+        </div>
+        <div class="service-card">
+            <h3>Портретная</h3>
+            <p>Индивидуальная или семейная съёмка в студии или на локации.</p>
+            <div class="service-price">от 15 000 ₽</div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Давайте создадим<br>что-то красивое вместе</h2>
+    <a href="contact.html" class="btn btn-solid">Связаться со мной</a>
+</section>
+
+<footer>
+    <div class="socials">
+        <a href="https://instagram.com/l.a.v_sasha" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://t.me/saaahv" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://vk.com/s.sahalev" target="_blank" rel="noopener">VK</a>
+    </div>
+    <p>© Александра Левина — Фотограф</p>
+</footer>
+
+<script>
+    // Бургер-меню
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger.addEventListener('click', () => menu.classList.toggle('open'));
+
+    // Скролл хедера
+    window.addEventListener('scroll', () => {
+        document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+    });
+</script>
+
+</body>
+</html>
