@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты — Александра Левина</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="header">
+    <a href="index.html" class="logo">LAVSASHA</a>
+    <nav>
+        <ul id="menu">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="portfolio.html">Портфолио</a></li>
+            <li><a href="contact.html" class="active">Контакты</a></li>
+        </ul>
+    </nav>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+</header>
+
+<section style="padding-top: 160px;">
+    <div class="section-title">Контакты</div>
+    <h1 class="section-heading">Давайте познакомимся</h1>
+
+    <div class="contact-grid">
+        <div class="contact-info">
+            <h3>Свяжитесь со мной</h3>
+            <p>Расскажите о своей идее — я отвечу в течение 24 часов и помогу подобрать формат съёмки.</p>
+
+            <div class="contact-item">
+                <div class="label">Email</div>
+                <a href="mailto:hello@anphoto.ru">hello@anphoto.ru</a>
+            </div>
+            <div class="contact-item">
+                <div class="label">Город</div>
+                <div>Орёл</div>
+            </div>
+            <div class="contact-item">
+            <div class="label">Соцсети</div>
+            <div class="social-buttons">
+                <a href="https://instagram.com/ваш_ник" target="_blank" rel="noopener" class="social-btn">Instagram</a>
+                <a href="https://t.me/ваш_ник" target="_blank" rel="noopener" class="social-btn">Telegram</a>
+                <a href="https://vk.com/ваш_ник" target="_blank" rel="noopener" class="social-btn">VK</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="socials">
+        <a href="https://instagram.com/l.a.v_sasha" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://t.me/saaahv" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://vk.com/s.sahalev" target="_blank" rel="noopener">VK</a>
+    </div>
+    <p>© Александра Левина — Фотограф</p>
+</footer>
+
+<script>
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger.addEventListener('click', () => menu.classList.toggle('open'));
+    window.addEventListener('scroll', () => {
+        document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+    });
+</script>
+
+</body>
+</html>
