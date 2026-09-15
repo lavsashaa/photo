@@ -1,0 +1,559 @@
+/* ===== СБРОС И БАЗОВЫЕ СТИЛИ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* чтобы шапка не перекрывала заголовок */
+}
+
+:root {
+    --bg: #0f0f0f;
+    --bg-light: #1a1a1a;
+    --text: #e8e8e8;
+    --text-muted: #888;
+    --accent: #d4a574;
+    --border: #2a2a2a;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* ===== ШАПКА ===== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 25px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(15, 15, 15, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s;
+}
+
+header.scrolled {
+    padding: 15px 50px;
+    border-bottom: 1px solid var(--border);
+}
+
+
+
+.logo {
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.logo span { color: var(--accent); }
+
+nav ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+nav a {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    position: relative;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--text);
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--accent);
+}
+
+/* Бургер для мобилы */
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.burger span {
+    width: 25px;
+    height: 1px;
+    background: var(--text);
+    transition: 0.3s;
+}
+
+/* Кнопки-якоря — в том же стиле, что и меню */
+.anchor-links {
+    display: flex;
+    gap: 40px;
+    margin-left: auto;
+    margin-right: 40px;
+}
+
+.anchor-links a {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    position: relative;
+    transition: color 0.3s;
+}
+
+.anchor-links a:hover {
+    color: var(--text);
+}
+
+.anchor-links a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--accent);
+}
+
+/* ===== ГЛАВНАЯ ===== */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+                url('https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1920') center/cover;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 7vw, 90px);
+    font-weight: 200;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero h1 em {
+    color: var(--accent);
+    font-style: italic;
+    font-family: Georgia, serif;
+}
+
+.hero p {
+    font-size: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 45px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    background: transparent;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.btn-solid {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.btn-solid:hover {
+    background: transparent;
+    color: var(--accent);
+}
+
+/* ===== СЕКЦИИ ===== */
+section {
+    padding: 120px 50px;
+}
+
+.section-title {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.section-heading {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+}
+
+/* ===== СЕТКА ФОТО ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+/* Masonry для портфолио */
+.masonry {
+    columns: 3;
+    column-gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.masonry .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    aspect-ratio: auto;
+}
+
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.social-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.social-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(212, 165, 116, 0.08);
+}
+
+/* ===== О СЕБЕ ===== */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    display: block;
+}
+
+.about-text h2 {
+    font-size: 42px;
+    font-weight: 200;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.about-text p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+}
+
+.stat-number {
+    font-size: 36px;
+    color: var(--accent);
+    font-weight: 300;
+}
+
+.stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* ===== УСЛУГИ ===== */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    padding: 40px 30px;
+    border: 1px solid var(--border);
+    background: var(--bg-light);
+    transition: all 0.3s;
+}
+
+.service-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+}
+
+.service-card h3 {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.service-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.service-price {
+    color: var(--accent);
+    font-size: 22px;
+    font-weight: 300;
+}
+
+/* ===== КОНТАКТЫ ===== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-info h3 {
+    font-size: 32px;
+    font-weight: 200;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+.contact-item {
+    margin-bottom: 25px;
+}
+
+.contact-item .label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 5px;
+}
+
+.contact-item a:hover { color: var(--accent); }
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+input, textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-bottom-color: var(--accent);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ===== ПОДВАЛ ===== */
+footer {
+    padding: 50px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+footer .socials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+footer .socials a:hover {
+    color: var(--accent);
+}
+
+/* ===== CTA СЕКЦИЯ ===== */
+.cta {
+    text-align: center;
+    padding: 120px 50px;
+    background: var(--bg-light);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.cta h2 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 200;
+    margin-bottom: 30px;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 900px) {
+    header { padding: 20px 25px; }
+    header.scrolled { padding: 15px 25px; }
+
+    nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--bg-light);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: right 0.4s;
+        border-left: 1px solid var(--border);
+    }
+
+    nav ul.open { right: 0; }
+
+    .burger { display: flex; z-index: 101; }
+
+    section { padding: 80px 25px; }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .masonry { columns: 1; }
+
+    .stats { grid-template-columns: 1fr; }
+
+    .cta { padding: 80px 25px; }
+
+    footer { padding: 40px 25px; }
+}
