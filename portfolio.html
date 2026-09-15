@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио — Александра Левина</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="header">
+   <a href="index.html" class="logo">LAVSASHA</a>
+    <nav>
+        <ul id="menu">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="portfolio.html" class="active">Портфолио</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+        </ul>
+    </nav>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+</header>
+
+<section style="padding-top: 160px;">
+    <div class="section-title">Портфолио</div>
+    <h1 class="section-heading">Избранные съёмки</h1>
+
+    <div class="masonry">
+        <div class="gallery-item" data-title="Свадьба · Сочи">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" alt="">
+        </div>
+        <div class="gallery-item" data-title="Портрет · Студия">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800" alt="">
+        </div>
+        <div class="gallery-item" data-title="Love story">
+            <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800" alt="">
+        </div>
+        <div class="gallery-item" data-title="Fashion">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800" alt="">
+        </div>
+        <div class="gallery-item" data-title="Семья">
+            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800" alt="">
+        </div>
+        <div class="gallery-item" data-title="Индивидуальная">
+            <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=800" alt="">
+        </div>
+        <div class="gallery-item" data-title="Свадьба · Крым">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800" alt="">
+        </div>
+        <div class="gallery-item" data-title="Backstage">
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800" alt="">
+        </div>
+        <div class="gallery-item" data-title="Портрет">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800" alt="">
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Хотите такую же съёмку?</h2>
+    <a href="contact.html" class="btn btn-solid">Забронировать дату</a>
+</section>
+
+<footer>
+    <div class="socials">
+        <a href="https://instagram.com/l.a.v_sasha" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://t.me/saaahv" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://vk.com/s.sahalev" target="_blank" rel="noopener">VK</a>
+    </div>
+    <p>© Александра Левина — Фотограф</p>
+</footer>
+
+<script>
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger.addEventListener('click', () => menu.classList.toggle('open'));
+    window.addEventListener('scroll', () => {
+        document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+    });
+</script>
+
+</body>
+</html>
