@@ -603,6 +603,8 @@ section {
 .masonry .gallery-item img {
     width: 100%;
     display: block;
+    height: auto;
+    aspect-ratio: attr(width) / attr(height);   /* не сработает без атрибутов */
 }
 
 /* ===== СОЦКНОПКИ ===== */
@@ -836,6 +838,7 @@ footer .socials a:hover {
     .services-section {
         background: linear-gradient(rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.95)),
                     url('../Photos/check.JPG') center/cover no-repeat scroll;
+        background-attachment: scroll;
         padding: 90px 25px;
     }
 
