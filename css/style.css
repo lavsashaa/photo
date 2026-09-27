@@ -44,15 +44,17 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background: rgba(15, 15, 15, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid transparent;
+    background: rgba(41, 157, 159, 0.25);   /* ← акцентный цвет с прозрачностью 25% */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(41, 157, 159, 0.3);
     transition: all 0.3s;
 }
 
 header.scrolled {
     padding: 15px 50px;
-    border-bottom: 1px solid var(--border);
+    background: rgba(41, 157, 159, 0.4);    /* при скролле чуть плотнее */
+    border-bottom: 1px solid rgba(41, 157, 159, 0.5);
 }
 
 .logo {
@@ -152,7 +154,7 @@ nav a.active::after {
     position: relative;
     padding: 120px 20px;
     background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
-                url('../Photos/IMG_1112.JPG') center/cover no-repeat;
+                url('../Photos/IMG_1112.JPG') left center / cover no-repeat;
 }
 
 .hero-content {
@@ -295,50 +297,58 @@ section {
     letter-spacing: 0.3px;
 }
 
+/* ===== ФОТО В СТИЛЕ ПОЛАРОИД ===== */
 .about-image {
     display: flex;
     justify-content: center;
     position: relative;
 }
 
-.about-image::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    right: -20px;
-    bottom: -20px;
-    border: 1px solid var(--accent);
-    opacity: 0.5;
-    transition: all 0.4s ease;
-    pointer-events: none;
-}
-
-.about-image:hover::before {
-    top: 12px;
-    left: 12px;
-    right: -12px;
-    bottom: -12px;
-    opacity: 0.9;
-}
-
-.about-image img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 560px;
-    display: block;
-    object-fit: contain;
+.about-polaroid {
+    background: #f4f4f0;
+    padding: 15px 15px 60px 15px;
+    transform: rotate(-2deg);
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
     position: relative;
-    z-index: 1;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+}
+
+.about-polaroid:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 8px 20px rgba(41, 157, 159, 0.2);
+}
+
+.about-polaroid img {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    display: block;
+}
+
+/* Подпись как от руки */
+.about-caption {
+    position: absolute;
+    bottom: 18px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #333;
+    letter-spacing: 1px;
 }
 
 /* ===== СЕКЦИЯ УСЛУГ С ФОНОМ ===== */
 .services-section {
     position: relative;
     background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.92)),
-                url('../Photos/check.jpg') center/cover no-repeat fixed;
+                url('../Photos/check.JPG') center/cover no-repeat fixed;
     padding: 140px 50px;
 }
 
@@ -765,7 +775,7 @@ footer .socials a:hover {
 
 /* Планшет: 1100px */
 @media (max-width: 1100px) {
-    .masonry { columns: 2; }
+    .masonry { columns: 3; }
 }
 
 /* Планшет: 900px */
@@ -844,7 +854,7 @@ footer .socials a:hover {
 
     /* Портфолио: 2 колонки */
     .masonry {
-        columns: 2;
+        columns: 3;
         column-gap: 8px;
     }
 
@@ -857,21 +867,11 @@ footer .socials a:hover {
 
 /* Телефон: 600px */
 @media (max-width: 600px) {
-    /* Hero: фото целиком, не обрезается */
-    .hero {
-        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-                    url('../Photos/IMG_1112.JPG') center/contain no-repeat,
-                    #0a0a0a;
-        padding: 100px 20px;
-    }
 
-    /* Услуги: фото целиком */
-    .services-section {
-        background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95)),
-                    url('../Photos/check.jpg') center/contain no-repeat scroll,
-                    #0a0a0a;
-        padding: 70px 20px;
-    }
+   .services-section {
+    background-attachment: scroll;   /* fixed плохо работает на мобиле */
+    padding: 70px 20px;
+}
 
     .service-card {
         padding: 35px 22px 28px;
