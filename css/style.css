@@ -433,7 +433,7 @@ section {
     font-size: 60px;
     font-weight: 100;
     color: var(--accent);
-    opacity: 0.15;
+    opacity: 0.35;
     line-height: 1;
     letter-spacing: -2px;
     user-select: none;
@@ -441,7 +441,7 @@ section {
 }
 
 .service-card:hover .service-number {
-    opacity: 0.25;
+    opacity: 0.45;
 }
 
 .service-head {
