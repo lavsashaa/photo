@@ -31,7 +31,7 @@
 <section class="hero">
     <div class="hero-content">
         <h1>LOVE <em>PHOTOS</em><br>ROCK 'N' ROLL</h1>
-        <p>Индивидуальные съемки</p>
+        <p>Индивидуальные съёмки</p>
         <a href="portfolio.html" class="btn">Смотреть работы</a>
     </div>
 </section>
@@ -41,45 +41,86 @@
         <div class="about-text">
             <div class="section-title" style="text-align:left;">О себе</div>
             <h2>Привет, я Саша</h2>
-            <p>Уже более 5 лет я занимаюсь фотографией. Сейчас для </p>
-            <p>Мой стиль — это естественность, тёплый свет и живые эмоции. Я не люблю постановочные кадры — мне важно поймать настоящие чувства и сохранить их навсегда.</p>
-            <p>Работаю на плёнку и цифру, люблю пленочную зернистость и мягкие тона.</p>
+            <p class="about-lead">Фотограф, который верит, что лучшее время для фото — это <em>«сейчас»</em>.</p>
 
+            <p>Мы часто ждём особенного случая или идеального отражения в зеркале. Но жизнь — это то, что происходит <em>прямо сейчас</em>!</p>
+            <p>Я создаю кадры без натянутых улыбок или неловких поз. Только ты, твоя энергия и твой момент. Я всегда подскажу, как встать, и поддержу, если ты стесняешься или никогда раньше не ходил на фотосессии.</p>
+            <p>Главное — не откладывай себя на потом. <em>Ты классный уже сегодня!</em></p>
+        </div>
+
+        <div class="about-image">
+            <img src="Photos/IMG_9300.JPG" alt="Александра Левина — фотограф" loading="lazy">
         </div>
     </div>
 </section>
 
-<section id="services" style="background: var(--bg-light);">
+
+<section id="services" class="services-section">
     <div class="section-title">Услуги</div>
     <h2 class="section-heading">Что я предлагаю</h2>
 
     <div class="services">
-        <div class="service-card">
-            <h3>Уличная индивидуальная съемка</h3>
-            <ul>
-                <li>15-20 фотографий в ретуши (кадры на обработку отбираю сама, исходники не отдаются)</li>
-                <li>Подбор локации для фотосессии</li>
-                <li>Консультация по образу</li>
+        <!-- Карточка 1 -->
+        <article class="service-card">
+            <span class="service-number">01</span>
+
+            <div class="service-head">
+                <h3>Уличная индивидуальная съёмка</h3>
+                <p class="service-subtitle">Прогулка по городу, естественный свет, живые эмоции</p>
+            </div>
+
+            <ul class="service-list">
+                <li>15–20 фотографий в ретуши <span>(кадры на обработку отбираю сама, исходники не отдаются)</span></li>
+                <li>Подбор локации под ваш образ</li>
+                <li>Консультация по образу и позированию</li>
             </ul>
-            <p>*срок отдачи фотографий до 7 дней</p>
-            <div class="service-price">4000₽/час</div>
-        </div>
-        <div class="service-card">
-            <h3>Студийная индивидуальная съемка</h3>
-            <ul>
-                <li>15-20 фотографий в ретуши (кадры на обработку отбираю сама, исходники не отдаются)</li>
-                <li>Консультация по образу</li>
+
+            <div class="service-meta">
+                <span class="service-meta-label">Срок отдачи</span>
+                <span class="service-meta-value">до 7 дней</span>
+            </div>
+
+            <div class="service-footer">
+                <div class="service-price">4000 ₽<small>/ час</small></div>
+                <a href="contact.html" class="service-btn">Забронировать</a>
+            </div>
+        </article>
+
+        <!-- Карточка 2 -->
+        <article class="service-card">
+            <span class="service-number">02</span>
+
+            <div class="service-head">
+                <h3>Студийная индивидуальная съёмка</h3>
+                <p class="service-subtitle">Полный контроль света, постановочные кадры, премиум-образы</p>
+            </div>
+
+            <ul class="service-list">
+                <li>15–20 фотографий в ретуши <span>(кадры на обработку отбираю сама, исходники не отдаются)</span></li>
+                <li>Консультация по образу и позированию</li>
+                <li>Помощь в подборе студии под задачу</li>
             </ul>
-            <p>*студия бронируется и оплачивается вами отдельно</p>
-            <p>*срок отдачи фотографий до 7 дней</p>
-            <div class="service-price">4000₽/час</div>
-        </div>
+
+            <div class="service-meta">
+                <span class="service-meta-label">Срок отдачи</span>
+                <span class="service-meta-value">до 7 дней</span>
+            </div>
+
+            <p class="service-note">Студия бронируется и оплачивается вами отдельно</p>
+
+            <div class="service-footer">
+                <div class="service-price">4000 ₽<small>/ час</small></div>
+                <a href="contact.html" class="service-btn">Забронировать</a>
+            </div>
+        </article>
     </div>
 </section>
 
 <section class="cta">
-    <h2>Давайте создадим<br>что-то красивое вместе</h2>
-    <a href="contact.html" class="btn btn-solid">Связаться со мной</a>
+    <div class="cta-content">
+        <h2 class="cta-title"><em>GAZ</em> фоткаться!</h2>
+        <a href="contact.html" class="btn cta-btn">Связаться со мной</a>
+    </div>
 </section>
 
 <footer>
@@ -92,12 +133,10 @@
 </footer>
 
 <script>
-    // Бургер-меню
     const burger = document.getElementById('burger');
     const menu = document.getElementById('menu');
     burger.addEventListener('click', () => menu.classList.toggle('open'));
 
-    // Скролл хедера
     window.addEventListener('scroll', () => {
         document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
     });
