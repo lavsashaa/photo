@@ -9,7 +9,7 @@
 <body>
 
 <header id="header">
-   <a href="index.html" class="logo">LAVSASHA</a>
+    <a href="index.html" class="logo">LAVSASHA</a>
     <nav>
         <ul id="menu">
             <li><a href="index.html">Главная</a></li>
@@ -17,7 +17,9 @@
             <li><a href="contact.html">Контакты</a></li>
         </ul>
     </nav>
-    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+    <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+    </button>
 </header>
 
 <section style="padding-top: 160px;">
@@ -25,39 +27,32 @@
     <h1 class="section-heading">Избранные съёмки</h1>
 
     <div class="masonry">
-        <div class="gallery-item" data-title="Свадьба · Сочи">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" alt="">
-        </div>
-        <div class="gallery-item" data-title="Портрет · Студия">
-            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800" alt="">
-        </div>
-        <div class="gallery-item" data-title="Love story">
-            <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800" alt="">
-        </div>
-        <div class="gallery-item" data-title="Fashion">
-            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800" alt="">
-        </div>
-        <div class="gallery-item" data-title="Семья">
-            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800" alt="">
-        </div>
-        <div class="gallery-item" data-title="Индивидуальная">
-            <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=800" alt="">
-        </div>
-        <div class="gallery-item" data-title="Свадьба · Крым">
-            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800" alt="">
-        </div>
-        <div class="gallery-item" data-title="Backstage">
-            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800" alt="">
-        </div>
-        <div class="gallery-item" data-title="Портрет">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800" alt="">
-        </div>
+        <div class="gallery-item"><img src="Photos/IMG_0417.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/IMG_0431.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/photo-output_g7rewuh9lu.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/photo-output_mhPcKcpdu9.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/photo-output.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-0F8A7D74-8CD7-4357-B97A-0D76F0FF312B.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-6BF41503-2DDD-4062-9935-BAC082D1F4E4.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-8FCA261E-25F5-47E3-A8C3-606E70725999.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-24E57BD6-0F9F-49E4-8EAC-4124D50D4620.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-49D4BDBD-46FB-4C00-AEF1-B0F33342915D.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-1097E998-1FE7-4160-BA65-FD5AFF87983B.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-6590BD13-DAEA-44C9-B456-C47325D2B7B6.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-A60A3903-607D-4C6F-81CB-039A86DAAB0D.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-BC21FDB8-DF8A-4FDC-B5C6-7BE11BC76D9F.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-CD9A2812-BA2B-49CA-96CE-10DC82376E66.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-E33339BE-241D-4D7D-B468-95BCD2DBC190.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-EF9F745C-69B1-4141-B741-FA93FA65D6C5.jpeg" alt="" loading="lazy"></div>
+        <div class="gallery-item"><img src="Photos/RNI-Films-IMG-F9F8FB09-1A11-4EB8-94AB-CED8C017ED61.jpeg" alt="" loading="lazy"></div>
     </div>
 </section>
 
 <section class="cta">
-    <h2>Хотите такую же съёмку?</h2>
-    <a href="contact.html" class="btn btn-solid">Забронировать дату</a>
+    <div class="cta-content">
+        <h2 class="cta-title cta-long">Хотите такую же съёмку?</h2>
+        <a href="contact.html" class="btn cta-btn">Забронировать дату</a>
+    </div>
 </section>
 
 <footer>
