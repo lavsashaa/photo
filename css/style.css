@@ -903,7 +903,7 @@ footer .socials a:hover {
 
     /* Портфолио: остаётся 2 колонки */
     .masonry {
-        columns: 2;
+        columns: 3;
         column-gap: 6px;
     }
 
@@ -927,7 +927,7 @@ footer .socials a:hover {
 /* Очень маленькие экраны: 380px */
 @media (max-width: 380px) {
     .masonry {
-        columns: 2;
+        columns: 3;
         column-gap: 5px;
     }
 
