@@ -835,7 +835,7 @@ footer .socials a:hover {
     /* Услуги: фон без fixed */
     .services-section {
         background: linear-gradient(rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.95)),
-                    url('../Photos/check.jpg') center/cover no-repeat scroll;
+                    url('../Photos/check.JPG') center/cover no-repeat scroll;
         padding: 90px 25px;
     }
 
