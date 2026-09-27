@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Александра Левина — Фотограф</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -49,10 +49,10 @@
         </div>
 
         <div class="about-image">
-    <div class="about-polaroid">
-        <img src="Photos/IMG_3207.jpg" alt="Александра Левина — фотограф" loading="lazy">
-    </div>
-</div>
+            <div class="about-polaroid">
+                <img src="Photos/IMG_3207.jpg" alt="Александра Левина — фотограф" loading="lazy">
+            </div>
+        </div>
     </div>
 </section>
 
@@ -61,54 +61,43 @@
     <h2 class="section-heading">Что я предлагаю</h2>
 
     <div class="services">
-        <!-- Карточка 1 -->
         <article class="service-card">
             <span class="service-number">01</span>
-
             <div class="service-head">
                 <h3>Уличная индивидуальная съёмка</h3>
                 <p class="service-subtitle">Прогулка по городу, естественный свет, живые эмоции</p>
             </div>
-
             <ul class="service-list">
                 <li>15–20 фотографий в ретуши <span>(кадры на обработку отбираю сама, исходники не отдаются)</span></li>
                 <li>Подбор локации под ваш образ</li>
                 <li>Консультация по образу и позированию</li>
             </ul>
-
             <div class="service-meta">
                 <span class="service-meta-label">Срок отдачи фотографий</span>
                 <span class="service-meta-value">до 7 дней</span>
             </div>
-
             <div class="service-footer">
                 <div class="service-price">4000 ₽<small>/ час</small></div>
                 <a href="contact.html" class="service-btn">Забронировать</a>
             </div>
         </article>
 
-        <!-- Карточка 2 -->
         <article class="service-card">
             <span class="service-number">02</span>
-
             <div class="service-head">
                 <h3>Студийная индивидуальная съёмка</h3>
                 <p class="service-subtitle">Полный контроль света, уютная обстановка, комфортные образы</p>
             </div>
-
             <ul class="service-list">
                 <li>15–20 фотографий в ретуши <span>(кадры на обработку отбираю сама, исходники не отдаются)</span></li>
                 <li>Консультация по образу и позированию</li>
                 <li>Помощь в подборе студии под задачу</li>
             </ul>
-
             <div class="service-meta">
                 <span class="service-meta-label">Срок отдачи фотографий</span>
                 <span class="service-meta-value">до 7 дней</span>
             </div>
-
             <p class="service-note">Студия бронируется и оплачивается вами отдельно</p>
-
             <div class="service-footer">
                 <div class="service-price">4000 ₽<small>/ час</small></div>
                 <a href="contact.html" class="service-btn">Забронировать</a>
@@ -133,13 +122,25 @@
     <p>© Александра Левина — Фотограф</p>
 </footer>
 
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
+    // Telegram
+    if (window.Telegram && window.Telegram.WebApp) {
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
+    }
+
+    // Бургер
     const burger = document.getElementById('burger');
     const menu = document.getElementById('menu');
     burger.addEventListener('click', () => menu.classList.toggle('open'));
 
+    // Скролл-эффект шапки — только граница, без размера
+    const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
-        document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+        header.classList.toggle('scrolled', window.scrollY > 50);
     });
 </script>
 
