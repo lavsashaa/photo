@@ -21,6 +21,24 @@ body {
     font-weight: 300;
     overscroll-behavior-y: none;
     -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Разрешаем выделение только там, где нужно (email, текст о себе) */
+.contact-item a,
+.contact-item > div,
+.about-text p,
+.about-lead,
+.contact-info > p {
+    -webkit-touch-callout: default;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 }
 
 :root {
@@ -40,7 +58,7 @@ a {
 
 img {
     -webkit-user-drag: none;
-    user-select: none;
+    user-drag: none;
 }
 
 /* ===== ШАПКА ===== */
@@ -84,6 +102,7 @@ nav a {
     text-transform: uppercase;
     color: var(--text-muted);
     position: relative;
+    transition: color 0.3s;
 }
 
 nav a:hover,
@@ -199,7 +218,7 @@ nav a.active::after {
     font-size: 12px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    transition: all 0.3s;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
     background: transparent;
     cursor: pointer;
 }
@@ -307,10 +326,9 @@ section {
     box-shadow:
         0 25px 50px rgba(0, 0, 0, 0.5),
         0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     position: relative;
     max-width: 100%;
-    will-change: transform;
 }
 
 .about-polaroid img {
@@ -318,6 +336,7 @@ section {
     max-width: 380px;
     height: auto;
     display: block;
+    pointer-events: none;
 }
 
 /* ===== СЕКЦИЯ УСЛУГ С ФОНОМ ===== */
@@ -361,10 +380,9 @@ section {
     background: linear-gradient(165deg, #1f1f1f 0%, #151515 100%);
     border: 1px solid var(--border);
     overflow: hidden;
-    transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    will-change: transform;
 }
 
 .service-card::before {
@@ -389,6 +407,7 @@ section {
     line-height: 1;
     letter-spacing: -2px;
     user-select: none;
+    pointer-events: none;
 }
 
 .service-head {
@@ -521,9 +540,11 @@ section {
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    transition: all 0.3s;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
     background: transparent;
     white-space: nowrap;
+    position: relative;
+    z-index: 2;
 }
 
 /* ===== ГАЛЕРЕЯ ПОРТФОЛИО ===== */
@@ -551,6 +572,7 @@ section {
     height: 100%;
     object-fit: cover;
     display: block;
+    pointer-events: none;
 }
 
 .gallery-item--big {
@@ -575,7 +597,7 @@ section {
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
     background: transparent;
 }
 
@@ -678,7 +700,7 @@ section {
     font-size: 12px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* ===== ПОДВАЛ ===== */
@@ -699,7 +721,7 @@ footer .socials {
 }
 
 /* =====================================================
-   HOVER — для мыши
+   HOVER — только для мыши
    ===================================================== */
 @media (hover: hover) and (pointer: fine) {
     .btn:hover {
@@ -748,6 +770,47 @@ footer .socials {
     }
 }
 
+/* =====================================================
+   PRESSED — для тач-устройств (через JS, при долгом нажатии)
+   ===================================================== */
+.service-card.pressed {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(41, 157, 159, 0.15);
+}
+
+.about-polaroid.pressed {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 8px 20px rgba(41, 157, 159, 0.2);
+}
+
+.btn.pressed {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.btn-solid.pressed {
+    background: transparent;
+    color: var(--accent);
+}
+
+.service-btn.pressed {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.social-btn.pressed {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(41, 157, 159, 0.08);
+}
+
+.cta-btn.pressed {
+    background: transparent;
+    color: #0f0f0f;
+}
 
 /* =====================================================
    PHOTOSWIPE — стиль под сайт
@@ -792,87 +855,6 @@ footer .socials {
     transition: opacity 0.3s ease;
 }
 
-/* ===== Анимации долгого нажатия (JS добавляет класс) ===== */
-.service-card.pressed {
-    border-color: var(--accent);
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(41, 157, 159, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.about-polaroid.pressed {
-    transform: rotate(0deg) scale(1.02);
-    box-shadow:
-        0 30px 60px rgba(0, 0, 0, 0.6),
-        0 8px 20px rgba(41, 157, 159, 0.2);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.btn.pressed {
-    background: var(--accent);
-    color: var(--bg);
-}
-
-.btn-solid.pressed {
-    background: transparent;
-    color: var(--accent);
-}
-
-.service-btn.pressed {
-    background: var(--accent);
-    color: var(--bg);
-}
-
-.social-btn.pressed {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: rgba(41, 157, 159, 0.08);
-}
-
-.cta-btn.pressed {
-    background: transparent;
-    color: #0f0f0f;
-}
-
-/* ===== Отключаем выделение и контекстное меню на тач-устройствах ===== */
-@media (hover: none) {
-    /* Всё, кроме текста и ссылок */
-    .service-card,
-    .about-polaroid,
-    .gallery-item,
-    .service-btn,
-    .social-btn,
-    .btn,
-    .btn-solid,
-    .cta-btn,
-    .burger,
-    .logo,
-    nav a,
-    .anchor-links a,
-    header,
-    footer .socials a,
-    img {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-    /* Разрешаем выделение только для важного текста — email, телефона, абзацев */
-    .contact-info > p,
-    .contact-item a,
-    .contact-item div,
-    .about-text p,
-    .about-lead {
-        -webkit-touch-callout: default;
-        -webkit-user-select: text;
-        -moz-user-select: text;
-        -ms-user-select: text;
-        user-select: text;
-    }
-}
-
 /* =====================================================
    АДАПТИВ
    ===================================================== */
@@ -885,6 +867,7 @@ footer .socials {
 }
 
 @media (max-width: 900px) {
+    /* Шапка без backdrop-filter — стабильность в Telegram */
     header {
         padding: 20px 25px;
         background: rgba(41, 157, 159, 0.95);
@@ -938,6 +921,16 @@ footer .socials {
     .cta-title.cta-long {
         font-size: clamp(22px, 6vw, 40px);
         white-space: normal;
+    }
+
+    /* CTA — убираем тяжёлый градиент */
+    .cta::before {
+        display: none;
+    }
+
+    /* Карточки — упрощаем тени для WebView */
+    .service-card.pressed {
+        box-shadow: none;
     }
 
     .gallery {
