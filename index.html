@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <script>
-        // Определяем Telegram WebView до отрисовки — упрощённая версия
+        // Определяем Telegram WebView до первой отрисовки.
+        // Класс ставится синхронно, поэтому Telegram-стили применяются без
+        // дополнительного layout/reflow после загрузки страницы.
         (function() {
             const ua = navigator.userAgent || '';
             const isTelegram = /Telegram/i.test(ua) ||
-                              (window.TelegramWebviewProxy !== undefined) ||
-                              (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData !== undefined);
+                !!window.TelegramWebviewProxy ||
+                !!(window.Telegram && window.Telegram.WebApp);
 
             if (isTelegram) {
                 document.documentElement.classList.add('is-telegram');
@@ -142,7 +144,11 @@
         const tg = window.Telegram.WebApp;
         tg.ready();
         tg.expand();
-        if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
+
+        // Не даём Telegram перехватывать вертикальный свайп страницы.
+        if (typeof tg.disableVerticalSwipes === 'function') {
+            tg.disableVerticalSwipes();
+        }
     }
 
     // ===== Бургер =====
@@ -161,52 +167,77 @@
     }
 
     // ===== Анимация долгого нажатия (только на тач-устройствах) =====
+    // В Telegram WebView не используем touchmove + setTimeout на каждом
+    // движении пальца: это создаёт очередь таймеров во время скролла.
     (function() {
         const isTouch = window.matchMedia('(hover: none)').matches;
         if (!isTouch) return;
 
         const HOLD_TIME = 300;
+        const MOVE_LIMIT = 10;
 
         function setupLongPress(selector) {
             document.querySelectorAll(selector).forEach(function(el) {
                 let timer = null;
+                let startX = 0;
+                let startY = 0;
+                let active = false;
 
-                function startPress(e) {
-                    if (e.touches && e.touches.length > 1) return;
-                    timer = setTimeout(function() {
-                        el.classList.add('pressed');
-                    }, HOLD_TIME);
-                }
-
-                function cancelPress() {
-                    if (timer) {
+                function clearPress(removeClass) {
+                    if (timer !== null) {
                         clearTimeout(timer);
                         timer = null;
                     }
-                    setTimeout(function() {
-                        el.classList.remove('pressed');
-                    }, 150);
+                    active = false;
+                    if (removeClass) el.classList.remove('pressed');
                 }
 
-                el.addEventListener('touchstart', startPress, { passive: true });
-                el.addEventListener('touchend', cancelPress, { passive: true });
-                el.addEventListener('touchcancel', cancelPress, { passive: true });
-                el.addEventListener('touchmove', cancelPress, { passive: true });
-                el.addEventListener('mousedown', startPress);
-                el.addEventListener('mouseup', cancelPress);
-                el.addEventListener('mouseleave', cancelPress);
+                function startPress(e) {
+                    if (e.pointerType && e.pointerType !== 'touch') return;
+                    if (e.isPrimary === false) return;
+
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    active = true;
+
+                    if (timer !== null) clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        if (active) el.classList.add('pressed');
+                        timer = null;
+                    }, HOLD_TIME);
+                }
+
+                function movePress(e) {
+                    if (!active) return;
+
+                    const dx = e.clientX - startX;
+                    const dy = e.clientY - startY;
+
+                    if ((dx * dx + dy * dy) > MOVE_LIMIT * MOVE_LIMIT) {
+                        clearPress(true);
+                    }
+                }
+
+                function endPress() {
+                    clearPress(true);
+                }
+
+                el.addEventListener('pointerdown', startPress, { passive: true });
+                el.addEventListener('pointermove', movePress, { passive: true });
+                el.addEventListener('pointerup', endPress, { passive: true });
+                el.addEventListener('pointercancel', endPress, { passive: true });
+                el.addEventListener('pointerleave', endPress, { passive: true });
             });
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            setupLongPress('.service-card');
-            setupLongPress('.about-polaroid');
-            setupLongPress('.btn');
-            setupLongPress('.btn-solid');
-            setupLongPress('.service-btn');
-            setupLongPress('.social-btn');
-            setupLongPress('.cta-btn');
-        });
+        // Скрипт находится в конце body — DOM уже готов.
+        setupLongPress('.service-card');
+        setupLongPress('.about-polaroid');
+        setupLongPress('.btn');
+        setupLongPress('.btn-solid');
+        setupLongPress('.service-btn');
+        setupLongPress('.social-btn');
+        setupLongPress('.cta-btn');
     })();
 
     // ===== Блокировка контекстного меню =====

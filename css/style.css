@@ -8,7 +8,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-    overflow-anchor: none;
+    overflow-anchor: auto;
     -webkit-text-size-adjust: 100%;
     touch-action: manipulation;
 }
@@ -854,56 +854,58 @@ footer .socials {
 }
 
 /* =====================================================
-   TELEGRAM WEBVIEW — УПРОЩЁННАЯ ВЕРСИЯ
+   TELEGRAM WEBVIEW — ОПТИМИЗАЦИЯ БЕЗ ОТДЕЛЬНОГО ДИЗАЙНА
    ===================================================== */
 
 html.is-telegram {
     scroll-behavior: auto;
+    overscroll-behavior-y: none;
+    -webkit-text-size-adjust: 100%;
 }
 
-/* ===== ШАПКА — прокручивается вместе со страницей в WebView ===== */
+/*
+ * Оставляем fixed-header как в обычном браузере, но убираем blur.
+ * backdrop-filter особенно дорог при частой смене направления скролла.
+ * Отдельный composited layer делает движение fixed-элемента стабильнее.
+ */
 html.is-telegram header {
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     background: rgba(41, 157, 159, 0.95);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform;
 }
 
 html.is-telegram header.scrolled {
     background: rgba(41, 157, 159, 0.98);
 }
 
-/* ===== HERO — упрощённый фон ===== */
-html.is-telegram .hero {
-    background: #0f0f0f !important;
-    position: relative;
-}
-
-/* Фоновые фото на главной вызывают тяжёлые перерисовки при резком скролле WebView. */
-html.is-telegram .hero::before,
-html.is-telegram .hero::after {
-    display: none !important;
-}
-
-/* ===== УСЛУГИ — без фотофонового слоя ===== */
+/* Не запускаем анимации/изменение layout, завязанные на scroll. */
+html.is-telegram .hero,
 html.is-telegram .services-section {
-    background: #0f0f0f !important;
-    position: relative;
+    background-attachment: scroll;
 }
 
+/* Telegram WebView плохо переносит дорогие фоновые слои при fling-scroll.
+   Сохраняем изображения и внешний вид, но исключаем лишние псевдослои. */
 html.is-telegram .services-section::before,
-html.is-telegram .services-section::after {
+html.is-telegram .services-section::after,
+html.is-telegram .cta::before {
     display: none !important;
 }
 
-/* ===== CTA — без радиального градиента ===== */
-html.is-telegram .cta::before {
-    display: none;
-}
-
-/* ===== Карточки услуг — простые ===== */
+/* Карточки не должны создавать отдельный тяжёлый compositing layer на каждом
+   touch-событии. Небольшой pressed-эффект сохраняется. */
 html.is-telegram .service-card {
-    background: #1a1a1a !important;
+    background: rgba(20, 20, 20, 0.92);
+    transition: none;
 }
 
 html.is-telegram .service-card.pressed {
@@ -911,34 +913,34 @@ html.is-telegram .service-card.pressed {
     transform: translateY(-2px);
 }
 
-/* ===== Полароид — без наклона ===== */
+/* Полароид оставляем визуально близким к браузеру, но без дорогой анимации. */
 html.is-telegram .about-polaroid {
-    transform: none;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: none;
 }
 
 html.is-telegram .about-polaroid.pressed {
-    transform: scale(1.02);
+    transform: rotate(-2deg) scale(1.01);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* ===== Кнопки — короткие переходы ===== */
+/* Переходы кнопок короткие, но не отключены полностью. */
 html.is-telegram .btn,
 html.is-telegram .btn-solid,
 html.is-telegram .service-btn,
 html.is-telegram .social-btn,
-html.is-telegram .cta-btn {
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+html.is-telegram .cta-btn,
+html.is-telegram a {
+    transition-duration: 0.15s;
 }
 
-/* ===== Галерея — без transition ===== */
+/* Не анимируем изображения при прокрутке. */
+html.is-telegram img {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
 html.is-telegram .gallery-item img {
     transition: none;
-}
-
-html.is-telegram a,
-html.is-telegram .logo {
-    transition: color 0.2s ease;
 }
 
 html.is-telegram .pswp {
