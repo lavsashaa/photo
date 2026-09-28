@@ -131,17 +131,11 @@
 
     // ===== Скролл-эффект шапки =====
     const headerEl = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-        if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
-    }, { passive: true });
-
-    // ===== Предзагрузка фото (убирает мигание при скролле вверх) =====
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.gallery-item img').forEach(function(img) {
-            img.loading = 'eager';
-            img.decoding = 'async';
-        });
-    });
+    if (!document.documentElement.classList.contains('is-telegram')) {
+        window.addEventListener('scroll', () => {
+            if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+    }
 
     // ===== Анимация долгого нажатия =====
     (function() {

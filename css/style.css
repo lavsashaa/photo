@@ -857,37 +857,13 @@ footer .socials {
    TELEGRAM WEBVIEW — УПРОЩЁННАЯ ВЕРСИЯ
    ===================================================== */
 
-/* Подсказки для более плавного скролла в WebView (iOS/Android)
-   - включаем инерционный скролл где возможно
-   - даём header аппаратное ускорение и will-change, чтобы избежать дорогих перерисовок
-   - уменьшаем вероятность repaint при фоновых изображениях
-*/
-html.is-telegram,
-html.is-telegram body,
-html.is-telegram main {
-    -webkit-overflow-scrolling: touch; /* iOS/embedded webviews */
-}
-
-/* Аппаратное ускорение для фиксированной шапки: заставляет браузер использовать композитный слой */
-html.is-telegram header {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
-/* Подсказка для фоновых изображений в hero — уменьшаем шанс перерисовки при скролле */
-html.is-telegram .hero::after {
-    will-change: transform;
-    background-attachment: scroll !important;
-}
-
-/* Конец подсказок для WebView */
 html.is-telegram {
     scroll-behavior: auto;
 }
 
-/* ===== ШАПКА — без размытия ===== */
+/* ===== ШАПКА — прокручивается вместе со страницей в WebView ===== */
 html.is-telegram header {
+    position: absolute;
     background: rgba(41, 157, 159, 0.95);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;

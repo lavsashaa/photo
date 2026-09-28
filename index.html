@@ -154,9 +154,11 @@
 
     // ===== Скролл-эффект шапки =====
     const headerEl = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-        if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
-    }, { passive: true });
+    if (!document.documentElement.classList.contains('is-telegram')) {
+        window.addEventListener('scroll', () => {
+            if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+    }
 
     // ===== Анимация долгого нажатия (только на тач-устройствах) =====
     (function() {
