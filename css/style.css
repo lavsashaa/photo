@@ -834,6 +834,45 @@ footer .socials {
     color: #0f0f0f;
 }
 
+/* ===== Отключаем выделение и контекстное меню на тач-устройствах ===== */
+@media (hover: none) {
+    /* Всё, кроме текста и ссылок */
+    .service-card,
+    .about-polaroid,
+    .gallery-item,
+    .service-btn,
+    .social-btn,
+    .btn,
+    .btn-solid,
+    .cta-btn,
+    .burger,
+    .logo,
+    nav a,
+    .anchor-links a,
+    header,
+    footer .socials a,
+    img {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Разрешаем выделение только для важного текста — email, телефона, абзацев */
+    .contact-info > p,
+    .contact-item a,
+    .contact-item div,
+    .about-text p,
+    .about-lead {
+        -webkit-touch-callout: default;
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    }
+}
+
 /* =====================================================
    АДАПТИВ
    ===================================================== */
