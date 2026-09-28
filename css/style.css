@@ -8,7 +8,6 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-    overflow-anchor: none;
     -webkit-text-size-adjust: 100%;
     touch-action: manipulation;
 }
@@ -856,55 +855,41 @@ footer .socials {
    TELEGRAM WEBVIEW — УПРОЩЁННАЯ ВЕРСИЯ
    ===================================================== */
 
+/* НЕ используем overscroll-behavior: none — конфликтует с Telegram */
 html.is-telegram {
-    /* Telegram WebView: отдаём вертикальный скролл полностью нативному движку. */
     scroll-behavior: auto;
-    overscroll-behavior-y: none;
-    -webkit-text-size-adjust: 100%;
 }
 
-/*
- * Оставляем fixed-header как в обычном браузере, но убираем blur.
- * backdrop-filter особенно дорог при частой смене направления скролла.
- * Отдельный composited layer делает движение fixed-элемента стабильнее.
- */
+/* Шапка — без blur, но остаётся fixed */
 html.is-telegram header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
     background: rgba(41, 157, 159, 0.95);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    transform: translate3d(0, 0, 0);
-    -webkit-transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    will-change: transform;
 }
 
 html.is-telegram header.scrolled {
     border-bottom-color: rgba(41, 157, 159, 0.35);
 }
 
-/* Не запускаем анимации/изменение layout, завязанные на scroll. */
-html.is-telegram .hero,
+/* Hero — тот же фон, что в браузере. contain убирает задержку скролла. */
+html.is-telegram .hero {
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
+                url('../Photos/IMG_1112.JPG') 20% center / cover no-repeat scroll;
+    contain: layout style paint;
+}
+
+/* Услуги — тот же фон */
 html.is-telegram .services-section {
-    background: #0f0f0f !important;
-    position: relative;
+    background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.92)),
+                url('../Photos/check.JPG') center/cover no-repeat scroll;
 }
 
-/* Telegram WebView плохо переносит дорогие фоновые слои при fling-scroll.
-   Сохраняем изображения и внешний вид, но исключаем лишние псевдослои. */
-html.is-telegram .services-section::before,
-html.is-telegram .services-section::after {
-    display: none !important;
-}
-
-/* Карточки не должны создавать отдельный тяжёлый compositing layer на каждом
-   touch-событии. Небольшой pressed-эффект сохраняется. */
-html.is-telegram .service-card {
+/* Карточки услуг — без blur, простой фон */
+html.is-telegram .services-section .service-card {
     background: rgba(20, 20, 20, 0.92);
+}
+
+html.is-telegram .service-card {
     transition: none;
 }
 
@@ -913,7 +898,7 @@ html.is-telegram .service-card.pressed {
     transform: translateY(-2px);
 }
 
-/* Полароид оставляем визуально близким к браузеру, но без дорогой анимации. */
+/* Полароид — без transition */
 html.is-telegram .about-polaroid {
     transition: none;
 }
@@ -923,7 +908,7 @@ html.is-telegram .about-polaroid.pressed {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* Переходы кнопок короткие, но не отключены полностью. */
+/* Кнопки — короткие переходы */
 html.is-telegram .btn,
 html.is-telegram .btn-solid,
 html.is-telegram .service-btn,
@@ -931,12 +916,6 @@ html.is-telegram .social-btn,
 html.is-telegram .cta-btn,
 html.is-telegram a {
     transition-duration: 0.15s;
-}
-
-/* Не анимируем изображения при прокрутке. */
-html.is-telegram img {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
 }
 
 html.is-telegram .gallery-item img {
@@ -1083,37 +1062,5 @@ html.is-telegram .pswp {
 
     .social-btn {
         padding: 10px 4px;
-    }
-}
-
-/* =====================================================
-   TELEGRAM FINAL OVERRIDES — должны иметь приоритет над responsive CSS
-   ===================================================== */
-@media (max-width: 900px) {
-    html.is-telegram header {
-        position: sticky;
-        top: 0;
-        background: rgba(41, 157, 159, 0.96);
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        transition: none;
-    }
-}
-
-@media (max-width: 600px) {
-    html.is-telegram {
-        scroll-behavior: auto;
-    }
-}
-
-
-@media (hover: none) {
-    html.is-telegram .btn:active,
-    html.is-telegram .btn-solid:active,
-    html.is-telegram .service-btn:active,
-    html.is-telegram .social-btn:active,
-    html.is-telegram .cta-btn:active {
-        background: var(--accent);
-        color: var(--bg);
     }
 }

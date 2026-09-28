@@ -129,7 +129,7 @@
         burger.addEventListener('click', () => menu.classList.toggle('open'));
     }
 
-    // ===== Скролл-эффект шапки =====
+    // ===== Скролл-эффект шапки (только не в Telegram) =====
     const headerEl = document.getElementById('header');
     if (!document.documentElement.classList.contains('is-telegram')) {
         window.addEventListener('scroll', () => {
@@ -143,48 +143,67 @@
         if (!isTouch) return;
 
         const HOLD_TIME = 300;
+        const MOVE_LIMIT = 10;
 
         function setupLongPress(selector) {
             document.querySelectorAll(selector).forEach(function(el) {
                 let timer = null;
+                let startX = 0;
+                let startY = 0;
+                let active = false;
 
-                function startPress(e) {
-                    if (e.touches && e.touches.length > 1) return;
-                    timer = setTimeout(function() {
-                        el.classList.add('pressed');
-                    }, HOLD_TIME);
-                }
-
-                function cancelPress() {
-                    if (timer) {
+                function clearPress(removeClass) {
+                    if (timer !== null) {
                         clearTimeout(timer);
                         timer = null;
                     }
-                    setTimeout(function() {
-                        el.classList.remove('pressed');
-                    }, 150);
+                    active = false;
+                    if (removeClass) el.classList.remove('pressed');
                 }
 
-                el.addEventListener('touchstart', startPress, { passive: true });
-                el.addEventListener('touchend', cancelPress, { passive: true });
-                el.addEventListener('touchcancel', cancelPress, { passive: true });
-                el.addEventListener('touchmove', cancelPress, { passive: true });
-                el.addEventListener('mousedown', startPress);
-                el.addEventListener('mouseup', cancelPress);
-                el.addEventListener('mouseleave', cancelPress);
+                function startPress(e) {
+                    if (e.pointerType && e.pointerType !== 'touch') return;
+                    if (e.isPrimary === false) return;
+
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    active = true;
+
+                    if (timer !== null) clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        if (active) el.classList.add('pressed');
+                        timer = null;
+                    }, HOLD_TIME);
+                }
+
+                function movePress(e) {
+                    if (!active) return;
+                    const dx = e.clientX - startX;
+                    const dy = e.clientY - startY;
+                    if ((dx * dx + dy * dy) > MOVE_LIMIT * MOVE_LIMIT) {
+                        clearPress(true);
+                    }
+                }
+
+                function endPress() {
+                    clearPress(true);
+                }
+
+                el.addEventListener('pointerdown', startPress, { passive: true });
+                el.addEventListener('pointermove', movePress, { passive: true });
+                el.addEventListener('pointerup', endPress, { passive: true });
+                el.addEventListener('pointercancel', endPress, { passive: true });
+                el.addEventListener('pointerleave', endPress, { passive: true });
             });
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            setupLongPress('.btn');
-            setupLongPress('.cta-btn');
-        });
+        setupLongPress('.btn');
+        setupLongPress('.cta-btn');
     })();
 
     // ===== Блокировка контекстного меню =====
     document.addEventListener('contextmenu', function(e) {
         if (e.target.closest('a')) {
-            // Для галереи — блокируем, PhotoSwipe перехватит
             e.preventDefault();
         }
     });
@@ -232,7 +251,6 @@
             returnFocus: true,
         });
 
-        // ===== Скролл к миниатюре ТОЛЬКО при закрытии =====
         lightbox.on('afterInit', function() {
             const pswp = lightbox.pswp;
 
@@ -257,7 +275,6 @@
 
         lightbox.init();
 
-        // Убираем target="_blank" — PhotoSwipe перехватывает клик
         document.querySelectorAll('.gallery-item').forEach(function(a) {
             a.removeAttribute('target');
             a.removeAttribute('rel');

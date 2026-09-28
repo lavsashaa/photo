@@ -152,7 +152,7 @@
         burger.addEventListener('click', () => menu.classList.toggle('open'));
     }
 
-    // ===== Скролл-эффект шапки =====
+    // ===== Скролл-эффект шапки (только не в Telegram) =====
     const headerEl = document.getElementById('header');
     if (!document.documentElement.classList.contains('is-telegram')) {
         window.addEventListener('scroll', () => {
@@ -160,9 +160,9 @@
         }, { passive: true });
     }
 
-    // ===== Анимация долгого нажатия (только на тач-устройствах) =====
-    // В Telegram WebView не используем touchmove + setTimeout на каждом
-    // движении пальца: это создаёт очередь таймеров во время скролла.
+    // ===== Анимация долгого нажатия =====
+    // Используем Pointer Events. Не создаём очередь setTimeout на touchmove —
+    // это главная причина «дёргания» при скролле в Telegram WebView.
     (function() {
         const isTouch = window.matchMedia('(hover: none)').matches;
         if (!isTouch) return;
@@ -203,10 +203,8 @@
 
                 function movePress(e) {
                     if (!active) return;
-
                     const dx = e.clientX - startX;
                     const dy = e.clientY - startY;
-
                     if ((dx * dx + dy * dy) > MOVE_LIMIT * MOVE_LIMIT) {
                         clearPress(true);
                     }
@@ -224,7 +222,7 @@
             });
         }
 
-        // Скрипт находится в конце body — DOM уже готов.
+        // Скрипт в конце body — DOM уже готов
         setupLongPress('.service-card');
         setupLongPress('.about-polaroid');
         setupLongPress('.btn');
