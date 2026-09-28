@@ -873,8 +873,8 @@ html.is-telegram {
    Заменяем на плотный однотонный фон. */
 html.is-telegram header {
     background: rgba(41, 157, 159, 0.25);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 /* Hero: высота через JS-переменную + contain, чтобы
