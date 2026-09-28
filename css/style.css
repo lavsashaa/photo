@@ -9,6 +9,8 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
     overscroll-behavior-y: none;
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
 }
 
 body {
@@ -18,6 +20,7 @@ body {
     line-height: 1.6;
     font-weight: 300;
     overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -33,6 +36,11 @@ a {
     color: inherit;
     text-decoration: none;
     transition: color 0.3s;
+}
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 /* ===== ШАПКА ===== */
@@ -141,14 +149,16 @@ nav a.active::after {
 
 /* ===== ГЛАВНАЯ (HERO) ===== */
 .hero {
-    min-height: 100vh;
-    min-height: 100svh;
+    height: 100vh;
+    height: 100svh;
+    min-height: 500px;
+    max-height: 900px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-    padding: 120px 20px;
+    padding: 100px 20px 60px;
     background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
                 url('../Photos/IMG_1112.JPG') 20% center / cover no-repeat scroll;
 }
@@ -519,7 +529,6 @@ section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 1fr;
-    grid-auto-flow: dense;
     gap: 12px;
     max-width: 1400px;
     margin: 0 auto;
@@ -531,6 +540,7 @@ section {
     cursor: pointer;
     aspect-ratio: 3 / 4;
     margin: 0;
+    touch-action: manipulation;
 }
 
 .gallery-item img {
@@ -540,36 +550,50 @@ section {
     display: block;
 }
 
-/* Общее для всех крупных */
 .gallery-item--big {
+    grid-column: span 2;
     grid-row: span 2;
     aspect-ratio: auto;
 }
 
-/* Крупное слева — колонки 1–2 */
-.gallery-item--big-left {
-    grid-column: 1 / span 2;
-}
-
-/* Крупное справа — колонки 3–4 */
-.gallery-item--big-right {
-    grid-column: 2 / span 2;
-}
-
-/* ===== ЛАЙТБОКС ===== */
+/* ===== ЛАЙТБОКС с FLIP-анимацией ===== */
 .lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.95);
-    display: none;
+    z-index: 1000;
+    display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    touch-action: pan-x pan-y pinch-zoom;
+    overscroll-behavior: contain;
+    overflow: hidden;
 }
 
 .lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 0;
+}
+
+.lightbox-stage {
+    position: relative;
+    z-index: 1;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 95vw;
+    max-height: 90vh;
+    transform-origin: center center;
+    will-change: transform, opacity;
 }
 
 .lightbox-img {
@@ -577,12 +601,9 @@ section {
     max-height: 90vh;
     object-fit: contain;
     user-select: none;
-    animation: lbFade 0.3s ease;
-}
-
-@keyframes lbFade {
-    from { opacity: 0; transform: scale(0.95); }
-    to   { opacity: 1; transform: scale(1); }
+    -webkit-user-drag: none;
+    display: block;
+    touch-action: pinch-zoom;
 }
 
 .lightbox-close {
@@ -613,11 +634,12 @@ section {
     cursor: pointer;
     line-height: 1;
     opacity: 0.7;
-    transition: all 0.3s;
+    transition: opacity 0.3s, background 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    z-index: 1001;
 }
 
 .lightbox-prev { left: 20px; }
@@ -658,13 +680,16 @@ section {
     margin-bottom: 20px;
 }
 
-.contact-info p {
+.contact-info > p {
     color: var(--text-muted);
-    margin-bottom: 40px;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 50px;
+    max-width: 380px;
 }
 
 .contact-item {
-    margin-bottom: 25px;
+    margin-bottom: 32px;
 }
 
 .contact-item .label {
@@ -760,9 +785,9 @@ footer .socials {
 }
 
 /* =====================================================
-   HOVER — ТОЛЬКО ТАМ, ГДЕ ЕСТЬ КУРСОР
+   HOVER — только там, где есть курсор
    ===================================================== */
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .btn:hover {
         background: var(--accent);
         color: var(--bg);
@@ -779,20 +804,11 @@ footer .socials {
         box-shadow: 0 25px 60px rgba(41, 157, 159, 0.12);
     }
 
-    .service-card:hover::before { opacity: 1; }
-
     .service-btn:hover {
         background: var(--accent);
         color: var(--bg);
     }
 
-    .gallery-item img {
-        transition: transform 0.5s ease;
-    }
-
-    .gallery-item:hover img {
-        transform: scale(1.05);
-    }
 
     .social-btn:hover {
         border-color: var(--accent);
@@ -826,26 +842,35 @@ footer .socials {
     }
 }
 
+.btn:active,
+.service-btn:active,
+.social-btn:active,
+.cta-btn:active {
+    opacity: 0.7;
+}
+
 /* =====================================================
    АДАПТИВ
    ===================================================== */
 
-/* Планшет: 1100px */
 @media (max-width: 1100px) {
     .gallery {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
     }
-
-    .gallery-item--big-left,
-    .gallery-item--big-right {
-        grid-column: span 2;
-    }
 }
 
-/* Планшет: 900px */
 @media (max-width: 900px) {
-    header { padding: 20px 25px; }
+    header {
+        padding: 20px 25px;
+        background: rgba(41, 157, 159, 0.95);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    header.scrolled {
+        background: rgba(41, 157, 159, 0.98);
+    }
 
     nav ul {
         position: fixed;
@@ -896,10 +921,7 @@ footer .socials {
         gap: 8px;
     }
 
-    .gallery-item--big-left,
-    .gallery-item--big-right {
-        grid-column: span 2;
-    }
+    .lightbox-close { top: 15px; right: 18px; font-size: 36px; }
 
     .lightbox-arrow {
         width: 45px;
@@ -910,8 +932,11 @@ footer .socials {
     footer { padding: 40px 20px; }
 }
 
-/* Телефон: 600px */
 @media (max-width: 600px) {
+    html {
+        scroll-behavior: auto;
+    }
+
     .services-section { padding: 70px 20px; }
 
     .service-card { padding: 35px 22px 28px; }
@@ -927,26 +952,22 @@ footer .socials {
     .service-price { font-size: 26px; }
     .service-btn { text-align: center; }
 
+    section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
     .gallery {
         grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
+        gap: 5px;
     }
 
-    .gallery-item--big-left,
-    .gallery-item--big-right {
-        grid-column: span 2;
-    }
-
-    .lightbox-close {
-        top: 10px;
-        right: 15px;
-        font-size: 36px;
-    }
+    .lightbox-close { top: 10px; right: 12px; font-size: 34px; }
 
     .lightbox-arrow {
         width: 40px;
         height: 40px;
-        font-size: 30px;
+        font-size: 28px;
     }
 
     .lightbox-prev { left: 8px; }
@@ -960,9 +981,24 @@ footer .socials {
     }
 
     .about-image img { max-height: 450px; }
+
+    .social-buttons {
+        flex-wrap: nowrap;
+        gap: 6px;
+    }
+
+    .social-btn {
+        padding: 12px 8px;
+        flex: 1;
+        text-align: center;
+        min-width: 0;
+    }
 }
 
-/* Очень маленькие экраны */
 @media (max-width: 380px) {
     .gallery { gap: 5px; }
+
+    .social-btn {
+        padding: 10px 4px;
+    }
 }
