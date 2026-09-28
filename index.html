@@ -135,13 +135,63 @@
     // Бургер
     const burger = document.getElementById('burger');
     const menu = document.getElementById('menu');
-    burger.addEventListener('click', () => menu.classList.toggle('open'));
+    if (burger && menu) {
+        burger.addEventListener('click', () => menu.classList.toggle('open'));
+    }
 
-    // Скролл-эффект шапки — только граница, без размера
-    const header = document.getElementById('header');
+    const headerEl = document.getElementById('header');
     window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 50);
-    });
+        if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // ===== Анимация долгого нажатия =====
+    (function() {
+        const isTouch = window.matchMedia('(hover: none)').matches;
+        if (!isTouch) return;
+
+        const HOLD_TIME = 300;
+
+        function setupLongPress(selector) {
+            document.querySelectorAll(selector).forEach(function(el) {
+                let timer = null;
+
+                function startPress(e) {
+                    if (e.touches && e.touches.length > 1) return;
+                    timer = setTimeout(function() {
+                        el.classList.add('pressed');
+                    }, HOLD_TIME);
+                }
+
+                function cancelPress() {
+                    if (timer) {
+                        clearTimeout(timer);
+                        timer = null;
+                    }
+                    setTimeout(function() {
+                        el.classList.remove('pressed');
+                    }, 150);
+                }
+
+                el.addEventListener('touchstart', startPress, { passive: true });
+                el.addEventListener('touchend', cancelPress, { passive: true });
+                el.addEventListener('touchcancel', cancelPress, { passive: true });
+                el.addEventListener('touchmove', cancelPress, { passive: true });
+                el.addEventListener('mousedown', startPress);
+                el.addEventListener('mouseup', cancelPress);
+                el.addEventListener('mouseleave', cancelPress);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setupLongPress('.service-card');
+            setupLongPress('.about-polaroid');
+            setupLongPress('.btn');
+            setupLongPress('.btn-solid');
+            setupLongPress('.service-btn');
+            setupLongPress('.social-btn');
+            setupLongPress('.cta-btn');
+        });
+    })();
 </script>
 
 </body>

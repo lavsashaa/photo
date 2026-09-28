@@ -748,49 +748,6 @@ footer .socials {
     }
 }
 
-/* =====================================================
-   TAP — анимации для мобильных
-   ===================================================== */
-@media (hover: none) {
-    .service-card:active {
-        border-color: var(--accent);
-        transform: translateY(-4px);
-        box-shadow: 0 15px 40px rgba(41, 157, 159, 0.15);
-    }
-
-    .about-polaroid:active {
-        transform: rotate(0deg) scale(1.02);
-        box-shadow:
-            0 30px 60px rgba(0, 0, 0, 0.6),
-            0 8px 20px rgba(41, 157, 159, 0.2);
-    }
-
-    .btn:active {
-        background: var(--accent);
-        color: var(--bg);
-    }
-
-    .btn-solid:active {
-        background: transparent;
-        color: var(--accent);
-    }
-
-    .service-btn:active {
-        background: var(--accent);
-        color: var(--bg);
-    }
-
-    .social-btn:active {
-        border-color: var(--accent);
-        color: var(--accent);
-        background: rgba(41, 157, 159, 0.08);
-    }
-
-    .cta-btn:active {
-        background: transparent;
-        color: #0f0f0f;
-    }
-}
 
 /* =====================================================
    PHOTOSWIPE — стиль под сайт
@@ -833,6 +790,48 @@ footer .socials {
 
 .pswp__img {
     transition: opacity 0.3s ease;
+}
+
+/* ===== Анимации долгого нажатия (JS добавляет класс) ===== */
+.service-card.pressed {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(41, 157, 159, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.about-polaroid.pressed {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 8px 20px rgba(41, 157, 159, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.btn.pressed {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.btn-solid.pressed {
+    background: transparent;
+    color: var(--accent);
+}
+
+.service-btn.pressed {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.social-btn.pressed {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(41, 157, 159, 0.08);
+}
+
+.cta-btn.pressed {
+    background: transparent;
+    color: #0f0f0f;
 }
 
 /* =====================================================

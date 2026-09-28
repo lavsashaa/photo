@@ -284,6 +284,68 @@
         })();
     </script>
 
+    <script>
+        // ===== Анимация долгого нажатия (только на мобильных) =====
+        (function() {
+            // Работает только на устройствах без курсора (тач)
+            const isTouch = window.matchMedia('(hover: none)').matches;
+            if (!isTouch) return;
+
+            const HOLD_TIME = 300; // мс — сколько держать палец
+
+            function setupLongPress(selector) {
+                const elements = document.querySelectorAll(selector);
+
+                elements.forEach(function(el) {
+                    let timer = null;
+                    let pressed = false;
+
+                    function startPress(e) {
+                        // Не срабатываем при мультитаче (зум)
+                        if (e.touches && e.touches.length > 1) return;
+
+                        pressed = false;
+                        timer = setTimeout(function() {
+                            el.classList.add('pressed');
+                            pressed = true;
+                        }, HOLD_TIME);
+                    }
+
+                    function cancelPress() {
+                        if (timer) {
+                            clearTimeout(timer);
+                            timer = null;
+                        }
+                        // Убираем анимацию с небольшой задержкой, чтобы её было видно
+                        setTimeout(function() {
+                            el.classList.remove('pressed');
+                        }, 150);
+                    }
+
+                    el.addEventListener('touchstart', startPress, { passive: true });
+                    el.addEventListener('touchend', cancelPress, { passive: true });
+                    el.addEventListener('touchcancel', cancelPress, { passive: true });
+                    el.addEventListener('touchmove', cancelPress, { passive: true });
+
+                    // Также для стилуса / мыши (Safari с трекпадом и т.п.)
+                    el.addEventListener('mousedown', startPress);
+                    el.addEventListener('mouseup', cancelPress);
+                    el.addEventListener('mouseleave', cancelPress);
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                setupLongPress('.service-card');
+                setupLongPress('.about-polaroid');
+                setupLongPress('.btn');
+                setupLongPress('.btn-solid');
+                setupLongPress('.service-btn');
+                setupLongPress('.social-btn');
+                setupLongPress('.cta-btn');
+            });
+        })();
+    </script>
+
 </body>
 
 </html>

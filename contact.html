@@ -1,4 +1,28 @@
-<section class="contact-section" style="padding-top: 140px;">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Контакты — Александра Левина</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="header">
+    <a href="index.html" class="logo">LAVSASHA</a>
+    <nav>
+        <ul id="menu">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="portfolio.html">Портфолио</a></li>
+            <li><a href="contact.html" class="active">Контакты</a></li>
+        </ul>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<section style="padding-top: 140px;">
     <div class="section-title">Контакты</div>
     <h1 class="section-heading">Давайте познакомимся</h1>
 
@@ -26,3 +50,86 @@
         </div>
     </div>
 </section>
+
+<footer>
+    <div class="socials">
+        <a href="https://instagram.com/l.a.v_sasha" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://t.me/saaahv" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://vk.com/s.sahalev" target="_blank" rel="noopener">VK</a>
+    </div>
+    <p>© Александра Левина — Фотограф</p>
+</footer>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+    // ===== Telegram =====
+    if (window.Telegram && window.Telegram.WebApp) {
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
+    }
+
+    // ===== Бургер =====
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    if (burger && menu) {
+        burger.addEventListener('click', () => menu.classList.toggle('open'));
+    }
+
+    // ===== Скролл-эффект шапки =====
+    const headerEl = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // ===== Анимация долгого нажатия (только на тач-устройствах) =====
+    (function() {
+        const isTouch = window.matchMedia('(hover: none)').matches;
+        if (!isTouch) return;
+
+        const HOLD_TIME = 300;
+
+        function setupLongPress(selector) {
+            document.querySelectorAll(selector).forEach(function(el) {
+                let timer = null;
+
+                function startPress(e) {
+                    if (e.touches && e.touches.length > 1) return;
+                    timer = setTimeout(function() {
+                        el.classList.add('pressed');
+                    }, HOLD_TIME);
+                }
+
+                function cancelPress() {
+                    if (timer) {
+                        clearTimeout(timer);
+                        timer = null;
+                    }
+                    setTimeout(function() {
+                        el.classList.remove('pressed');
+                    }, 150);
+                }
+
+                el.addEventListener('touchstart', startPress, { passive: true });
+                el.addEventListener('touchend', cancelPress, { passive: true });
+                el.addEventListener('touchcancel', cancelPress, { passive: true });
+                el.addEventListener('touchmove', cancelPress, { passive: true });
+                el.addEventListener('mousedown', startPress);
+                el.addEventListener('mouseup', cancelPress);
+                el.addEventListener('mouseleave', cancelPress);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setupLongPress('.social-btn');
+            setupLongPress('.btn');
+            setupLongPress('.btn-solid');
+            setupLongPress('.cta-btn');
+            setupLongPress('.contact-item a');
+        });
+    })();
+</script>
+
+</body>
+</html>
