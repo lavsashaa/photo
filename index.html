@@ -249,29 +249,28 @@
         if (!hero) return;
 
         function setHeroHeight() {
-            // Берём максимальную высоту из window.innerHeight и screen.height,
-            // чтобы hero точно покрывал экран
-            const vh = Math.max(window.innerHeight, window.screen.height || 0);
+            // Берём реально видимую высоту без адресной строки.
+            // svh в CSS даёт то же самое, но пересчитывается при скролле,
+            // а мы фиксируем значение один раз.
+            let vh = window.innerHeight;
+
+            // На всякий случай — если Telegram отдаёт 0, берём documentElement
+            if (!vh || vh < 100) {
+                vh = document.documentElement.clientHeight || 600;
+            }
+
             document.documentElement.style.setProperty('--hero-height', vh + 'px');
         }
 
-        // Устанавливаем высоту сразу
+        // Первый расчёт — сразу
         setHeroHeight();
 
-        // И ещё раз после полной загрузки — на случай, если Telegram
-        // сначала отдаёт неточный innerHeight
+        // Второй — после полной загрузки (Telegram иногда даёт innerHeight с задержкой)
         window.addEventListener('load', setHeroHeight);
 
-        // При повороте экрана — обновляем
+        // При повороте экрана — пересчитываем
         window.addEventListener('orientationchange', function() {
             setTimeout(setHeroHeight, 300);
-        });
-
-        // При resize — обновляем, но с задержкой, чтобы не дёргалось
-        let resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(setHeroHeight, 200);
         });
     })();
 </script>
