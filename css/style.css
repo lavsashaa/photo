@@ -855,12 +855,10 @@ footer .socials {
    TELEGRAM WEBVIEW — УПРОЩЁННАЯ ВЕРСИЯ
    ===================================================== */
 
-/* НЕ используем overscroll-behavior: none — конфликтует с Telegram */
 html.is-telegram {
     scroll-behavior: auto;
 }
 
-/* Шапка — без blur, но остаётся fixed */
 html.is-telegram header {
     background: rgba(41, 157, 159, 0.95);
     backdrop-filter: none;
@@ -871,11 +869,10 @@ html.is-telegram header.scrolled {
     border-bottom-color: rgba(41, 157, 159, 0.35);
 }
 
-/* Hero — тот же фон, что в браузере. contain убирает задержку скролла. */
+/* Hero — тот же фон, что и в браузере. Без псевдоэлементов, без !important. */
 html.is-telegram .hero {
     background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
                 url('../Photos/IMG_1112.JPG') 20% center / cover no-repeat scroll;
-    contain: layout style paint;
 }
 
 /* Услуги — тот же фон */
@@ -884,7 +881,6 @@ html.is-telegram .services-section {
                 url('../Photos/check.JPG') center/cover no-repeat scroll;
 }
 
-/* Карточки услуг — без blur, простой фон */
 html.is-telegram .services-section .service-card {
     background: rgba(20, 20, 20, 0.92);
 }
@@ -898,7 +894,6 @@ html.is-telegram .service-card.pressed {
     transform: translateY(-2px);
 }
 
-/* Полароид — без transition */
 html.is-telegram .about-polaroid {
     transition: none;
 }
@@ -908,7 +903,6 @@ html.is-telegram .about-polaroid.pressed {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* Кнопки — короткие переходы */
 html.is-telegram .btn,
 html.is-telegram .btn-solid,
 html.is-telegram .service-btn,
@@ -984,6 +978,17 @@ html.is-telegram .pswp {
     .about-text h2 { font-size: 34px; }
     .about-lead { font-size: 16px !important; }
 
+    /* HERO на мобиле: высота через aspect-ratio, а не через svh.
+       Так адресная строка Telegram/Safari не пересчитывает layout,
+       и скролл начинается мгновенно, как в портфолио. */
+    .hero {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: 4 / 5;
+        padding: 120px 20px 80px;
+    }
+
     .services-section { padding: 90px 25px; }
 
     .cta { padding: 80px 20px; }
@@ -1008,6 +1013,11 @@ html.is-telegram .pswp {
 @media (max-width: 600px) {
     html {
         scroll-behavior: auto;
+    }
+
+    .hero {
+        aspect-ratio: 3 / 4;
+        padding: 100px 20px 60px;
     }
 
     .services-section { padding: 70px 20px; }
