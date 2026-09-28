@@ -8,7 +8,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-    overscroll-behavior-y: none;
+    overflow-anchor: none;
     -webkit-text-size-adjust: 100%;
     touch-action: manipulation;
 }
@@ -19,7 +19,6 @@ body {
     color: var(--text);
     line-height: 1.6;
     font-weight: 300;
-    overscroll-behavior-y: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -856,48 +855,23 @@ footer .socials {
 
 /* =====================================================
    TELEGRAM WEBVIEW — УПРОЩЁННАЯ ВЕРСИЯ
-   Убираем всё тяжёлое, но оставляем фотографии
    ===================================================== */
-
-/* ГЛАВНОЕ: убираем overscroll-behavior — главный виновник дёрганья */
-html.is-telegram,
-html.is-telegram body {
-    overscroll-behavior-y: auto !important;
-    overscroll-behavior: auto !important;
-    scroll-behavior: auto !important;
+html.is-telegram {
+    scroll-behavior: auto;
 }
 
-/* Убираем все «ускорители» GPU — они ЗАМЕДЛЯЮТ WebView */
-html.is-telegram * {
-    will-change: auto !important;
-    backface-visibility: visible !important;
-    -webkit-backface-visibility: visible !important;
-    transform-style: flat !important;
-    perspective: none !important;
-}
-
-/* Убираем ВСЕ анимации и transitions */
-html.is-telegram *,
-html.is-telegram *::before,
-html.is-telegram *::after {
-    transition: none !important;
-    animation: none !important;
-    animation-duration: 0s !important;
-}
-
-/* ===== ШАПКА — без размытия и прозрачности ===== */
+/* ===== ШАПКА — без размытия ===== */
 html.is-telegram header {
-    background: #0f0f0f !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border-bottom: 1px solid #2a2a2a !important;
+    background: rgba(41, 157, 159, 0.95);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 html.is-telegram header.scrolled {
-    background: #0f0f0f !important;
+    background: rgba(41, 157, 159, 0.98);
 }
 
-/* ===== HERO — фото остаётся, но без градиента-слоя ===== */
+/* ===== HERO — фото через ::after, затемнение ::before ===== */
 html.is-telegram .hero {
     background: #0f0f0f !important;
     position: relative;
@@ -927,7 +901,7 @@ html.is-telegram .hero-content {
     z-index: 2 !important;
 }
 
-/* ===== УСЛУГИ — фото остаётся, но без градиента-слоя ===== */
+/* ===== УСЛУГИ — фото через ::after ===== */
 html.is-telegram .services-section {
     background: #0f0f0f !important;
     position: relative;
@@ -957,140 +931,53 @@ html.is-telegram .services-section > * {
     z-index: 2 !important;
 }
 
-/* ===== КАРТОЧКИ УСЛУГ — простые, без градиентов ===== */
+/* ===== CTA — без радиального градиента ===== */
+html.is-telegram .cta::before {
+    display: none;
+}
+
+/* ===== Карточки услуг — простые ===== */
 html.is-telegram .service-card {
     background: #1a1a1a !important;
-    border: 1px solid #2a2a2a !important;
-    box-shadow: none !important;
-    transform: none !important;
-    overflow: hidden !important;
-}
-
-/* Убираем золотую полосу сверху и radial-свечение */
-html.is-telegram .service-card::before {
-    display: none !important;
-}
-
-html.is-telegram .service-card::after {
-    display: none !important;
 }
 
 html.is-telegram .service-card.pressed {
-    background: #222 !important;
-    border-color: #299d9f !important;
-    transform: none !important;
-    box-shadow: none !important;
+    box-shadow: none;
+    transform: translateY(-2px);
 }
 
-html.is-telegram .service-number {
-    opacity: 0.15 !important;
-}
-
-/* Убираем градиент в "services-section .service-card" */
-html.is-telegram .services-section .service-card {
-    background: #1a1a1a !important;
-}
-
-/* ===== ПОЛАРОИД — без наклона, без сложной тени ===== */
+/* ===== Полароид — без наклона ===== */
 html.is-telegram .about-polaroid {
-    transform: none !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4) !important;
-    transition: none !important;
-    background: #f4f4f0 !important;
+    transform: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 html.is-telegram .about-polaroid.pressed {
-    transform: none !important;
-    background: #e8e8e4 !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4) !important;
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* ===== CTA — убираем радиальный градиент ===== */
-html.is-telegram .cta {
-    background: var(--accent) !important;
-}
-
-html.is-telegram .cta::before {
-    display: none !important;
-}
-
-html.is-telegram .cta::after {
-    display: none !important;
-}
-
-html.is-telegram .cta-btn {
-    background: #0f0f0f !important;
-    color: var(--accent) !important;
-    border: 1px solid #0f0f0f !important;
-}
-
-/* ===== КНОПКИ — без transitions, но с pressed ===== */
+/* ===== Кнопки — короткие переходы ===== */
 html.is-telegram .btn,
 html.is-telegram .btn-solid,
 html.is-telegram .service-btn,
 html.is-telegram .social-btn,
 html.is-telegram .cta-btn {
-    transition: none !important;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-html.is-telegram .btn.pressed {
-    background: var(--accent) !important;
-    color: var(--bg) !important;
-}
-
-html.is-telegram .btn-solid.pressed {
-    background: transparent !important;
-    color: var(--accent) !important;
-}
-
-html.is-telegram .service-btn.pressed {
-    background: var(--accent) !important;
-    color: var(--bg) !important;
-}
-
-html.is-telegram .social-btn.pressed {
-    background: rgba(41, 157, 159, 0.15) !important;
-    border-color: var(--accent) !important;
-    color: var(--accent) !important;
-}
-
-html.is-telegram .cta-btn.pressed {
-    background: transparent !important;
-    color: #0f0f0f !important;
-}
-
-/* ===== Галерея портфолио — без transition, без тени ===== */
+/* ===== Галерея — без transition ===== */
 html.is-telegram .gallery-item img {
-    transition: none !important;
-    transform: none !important;
+    transition: none;
 }
 
-/* ===== Футер и ссылки — без transition ===== */
 html.is-telegram a,
-html.is-telegram .logo,
-html.is-telegram nav a,
-html.is-telegram .anchor-links a,
-html.is-telegram footer .socials a {
-    transition: none !important;
+html.is-telegram .logo {
+    transition: color 0.2s ease;
 }
 
-/* ===== Фон секций — плоские ===== */
-html.is-telegram section {
-    background-color: #0f0f0f;
-}
-
-/* ===== PhotoSwipe — оставляем, он сам справляется ===== */
 html.is-telegram .pswp {
-    --pswp-bg: #0f0f0f;
-    --pswp-placeholder-bg: #1a1a1a;
-}
-
-html.is-telegram .pswp__button {
-    background: rgba(255, 255, 255, 0.1) !important;
-}
-
-html.is-telegram .pswp__img {
-    transition: none !important;
+    --pswp-bg: rgba(15, 15, 15, 0.98);
 }
 
 /* =====================================================
