@@ -163,11 +163,12 @@ nav a.active::after {
 }
 
 /* ===== ГЛАВНАЯ (HERO) ===== */
+/* Высота — ровно высота экрана. Без max-height, чтобы фото
+   заполняло весь экран на любом устройстве. */
 .hero {
     height: 100vh;
     height: 100svh;
     min-height: 500px;
-    max-height: 900px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -176,6 +177,14 @@ nav a.active::after {
     padding: 100px 20px 60px;
     background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
                 url('../Photos/IMG_1112.JPG') 20% center / cover no-repeat scroll;
+}
+
+/* Только для очень широких экранов ограничиваем высоту,
+   чтобы hero не был чрезмерно огромным на 2K/4K мониторах */
+@media (min-width: 1400px) {
+    .hero {
+        max-height: 1000px;
+    }
 }
 
 .hero-content {
@@ -874,8 +883,8 @@ html.is-telegram header.scrolled {
  * - высота фиксируется через CSS-переменную --hero-height, которую
  *   устанавливает JS один раз при загрузке (см. index.html);
  * - contain изолирует layout, чтобы адресная строка Telegram
- *   не пересчитывала размеры блока при скролле.
- * Фон возвращаем тот же, что и в браузере — фотография видна.
+ *   не пересчитывала размеры блока при скролле;
+ * - фон — та же фотография, что и в браузере.
  */
 html.is-telegram .hero {
     height: var(--hero-height, 100svh);
