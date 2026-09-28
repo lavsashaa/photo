@@ -161,8 +161,6 @@
     }
 
     // ===== Анимация долгого нажатия =====
-    // Используем Pointer Events. Не создаём очередь setTimeout на touchmove —
-    // это главная причина «дёргания» при скролле в Telegram WebView.
     (function() {
         const isTouch = window.matchMedia('(hover: none)').matches;
         if (!isTouch) return;
@@ -222,7 +220,6 @@
             });
         }
 
-        // Скрипт в конце body — DOM уже готов
         setupLongPress('.service-card');
         setupLongPress('.about-polaroid');
         setupLongPress('.btn');
@@ -241,6 +238,42 @@
         if (e.target.closest('.about-lead')) return;
         e.preventDefault();
     });
+</script>
+
+<!-- ===== Telegram: фиксируем высоту hero один раз при загрузке ===== -->
+<script>
+    (function() {
+        if (!document.documentElement.classList.contains('is-telegram')) return;
+
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+
+        function setHeroHeight() {
+            // Берём максимальную высоту из window.innerHeight и screen.height,
+            // чтобы hero точно покрывал экран
+            const vh = Math.max(window.innerHeight, window.screen.height || 0);
+            document.documentElement.style.setProperty('--hero-height', vh + 'px');
+        }
+
+        // Устанавливаем высоту сразу
+        setHeroHeight();
+
+        // И ещё раз после полной загрузки — на случай, если Telegram
+        // сначала отдаёт неточный innerHeight
+        window.addEventListener('load', setHeroHeight);
+
+        // При повороте экрана — обновляем
+        window.addEventListener('orientationchange', function() {
+            setTimeout(setHeroHeight, 300);
+        });
+
+        // При resize — обновляем, но с задержкой, чтобы не дёргалось
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(setHeroHeight, 200);
+        });
+    })();
 </script>
 
 </body>

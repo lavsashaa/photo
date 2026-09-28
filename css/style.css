@@ -869,13 +869,23 @@ html.is-telegram header.scrolled {
     border-bottom-color: rgba(41, 157, 159, 0.35);
 }
 
-/* Hero — тот же фон, что и в браузере. Без псевдоэлементов, без !important. */
+/*
+ * Hero в Telegram:
+ * - высота фиксируется через CSS-переменную --hero-height, которую
+ *   устанавливает JS один раз при загрузке (см. index.html);
+ * - contain изолирует layout, чтобы адресная строка Telegram
+ *   не пересчитывала размеры блока при скролле.
+ * Фон возвращаем тот же, что и в браузере — фотография видна.
+ */
 html.is-telegram .hero {
+    height: var(--hero-height, 100svh);
+    min-height: 0;
+    max-height: none;
+    contain: size layout style;
     background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
                 url('../Photos/IMG_1112.JPG') 20% center / cover no-repeat scroll;
 }
 
-/* Услуги — тот же фон */
 html.is-telegram .services-section {
     background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.92)),
                 url('../Photos/check.JPG') center/cover no-repeat scroll;
@@ -978,17 +988,6 @@ html.is-telegram .pswp {
     .about-text h2 { font-size: 34px; }
     .about-lead { font-size: 16px !important; }
 
-    /* HERO на мобиле: высота через aspect-ratio, а не через svh.
-       Так адресная строка Telegram/Safari не пересчитывает layout,
-       и скролл начинается мгновенно, как в портфолио. */
-    .hero {
-        height: auto;
-        min-height: 0;
-        max-height: none;
-        aspect-ratio: 4 / 5;
-        padding: 120px 20px 80px;
-    }
-
     .services-section { padding: 90px 25px; }
 
     .cta { padding: 80px 20px; }
@@ -1013,11 +1012,6 @@ html.is-telegram .pswp {
 @media (max-width: 600px) {
     html {
         scroll-behavior: auto;
-    }
-
-    .hero {
-        aspect-ratio: 3 / 4;
-        padding: 100px 20px 60px;
     }
 
     .services-section { padding: 70px 20px; }
