@@ -1,353 +1,289 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Портфолио — Александра Левина</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
 </head>
+
 <body>
 
-<header id="header">
-    <a href="index.html" class="logo">LAVSASHA</a>
-    <nav>
-        <ul id="menu">
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="portfolio.html" class="active">Портфолио</a></li>
-            <li><a href="contact.html">Контакты</a></li>
-        </ul>
-    </nav>
-    <button class="burger" id="burger" aria-label="Меню">
-        <span></span><span></span><span></span>
-    </button>
-</header>
+    <header id="header">
+        <a href="index.html" class="logo">LAVSASHA</a>
+        <nav>
+            <ul id="menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="portfolio.html" class="active">Портфолио</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <button class="burger" id="burger" aria-label="Меню">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
 
-<section style="padding-top: 140px;">
-    <div class="section-title">Портфолио</div>
-    <h1 class="section-heading">Избранные съёмки</h1>
+    <section style="padding-top: 140px;">
+        <div class="section-title">Портфолио</div>
+        <h1 class="section-heading">Избранные съёмки</h1>
 
-    <div class="gallery">
-        <figure class="gallery-item gallery-item--big" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0417.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0417.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0431.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0431.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_g7rewuh9lu.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_g7rewuh9lu.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_mhPcKcpdu9.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_mhPcKcpdu9.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item gallery-item--big" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-EF9F745C-69B1-4141-B741-FA93FA65D6C5.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-EF9F745C-69B1-4141-B741-FA93FA65D6C5.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item gallery-item--big" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-0F8A7D74-8CD7-4357-B97A-0D76F0FF312B.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-0F8A7D74-8CD7-4357-B97A-0D76F0FF312B.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6BF41503-2DDD-4062-9935-BAC082D1F4E4.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6BF41503-2DDD-4062-9935-BAC082D1F4E4.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-8FCA261E-25F5-47E3-A8C3-606E70725999.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-8FCA261E-25F5-47E3-A8C3-606E70725999.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-24E57BD6-0F9F-49E4-8EAC-4124D50D4620.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-24E57BD6-0F9F-49E4-8EAC-4124D50D4620.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item gallery-item--big" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-49D4BDBD-46FB-4C00-AEF1-B0F33342915D.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-49D4BDBD-46FB-4C00-AEF1-B0F33342915D.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-F9F8FB09-1A11-4EB8-94AB-CED8C017ED61.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-F9F8FB09-1A11-4EB8-94AB-CED8C017ED61.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item gallery-item--big" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-1097E998-1FE7-4160-BA65-FD5AFF87983B.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-1097E998-1FE7-4160-BA65-FD5AFF87983B.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6590BD13-DAEA-44C9-B456-C47325D2B7B6.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6590BD13-DAEA-44C9-B456-C47325D2B7B6.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-A60A3903-607D-4C6F-81CB-039A86DAAB0D.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-A60A3903-607D-4C6F-81CB-039A86DAAB0D.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-BC21FDB8-DF8A-4FDC-B5C6-7BE11BC76D9F.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-BC21FDB8-DF8A-4FDC-B5C6-7BE11BC76D9F.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item gallery-item--big" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-CD9A2812-BA2B-49CA-96CE-10DC82376E66.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-CD9A2812-BA2B-49CA-96CE-10DC82376E66.jpeg" alt="" loading="lazy">
-        </figure>
-        <figure class="gallery-item" data-src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-E33339BE-241D-4D7D-B468-95BCD2DBC190.jpeg">
-            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-E33339BE-241D-4D7D-B468-95BCD2DBC190.jpeg" alt="" loading="lazy">
-        </figure>
-    </div>
-</section>
+        <div class="gallery">
+            <a class="gallery-item gallery-item--big"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0417.jpeg" data-pswp-width="1080"
+                data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0417.jpeg" alt="" >
+            </a>
+            <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0431.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0431.jpeg" alt="" >
+            </a>
+            <a class="gallery-item"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_g7rewuh9lu.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_g7rewuh9lu.jpeg" alt=""
+                    >
+            </a>
+            <a class="gallery-item"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_mhPcKcpdu9.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_mhPcKcpdu9.jpeg" alt=""
+                    >
+            </a>
+            <a class="gallery-item gallery-item--big"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output.jpeg" data-pswp-width="1080"
+                data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output.jpeg" alt=""
+                    >
+            </a>
+            <a class="gallery-item"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-EF9F745C-69B1-4141-B741-FA93FA65D6C5.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-EF9F745C-69B1-4141-B741-FA93FA65D6C5.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item gallery-item--big"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-0F8A7D74-8CD7-4357-B97A-0D76F0FF312B.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-0F8A7D74-8CD7-4357-B97A-0D76F0FF312B.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6BF41503-2DDD-4062-9935-BAC082D1F4E4.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6BF41503-2DDD-4062-9935-BAC082D1F4E4.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-8FCA261E-25F5-47E3-A8C3-606E70725999.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-8FCA261E-25F5-47E3-A8C3-606E70725999.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-24E57BD6-0F9F-49E4-8EAC-4124D50D4620.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-24E57BD6-0F9F-49E4-8EAC-4124D50D4620.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item gallery-item--big"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-49D4BDBD-46FB-4C00-AEF1-B0F33342915D.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-49D4BDBD-46FB-4C00-AEF1-B0F33342915D.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-F9F8FB09-1A11-4EB8-94AB-CED8C017ED61.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-F9F8FB09-1A11-4EB8-94AB-CED8C017ED61.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item gallery-item--big"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-1097E998-1FE7-4160-BA65-FD5AFF87983B.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-1097E998-1FE7-4160-BA65-FD5AFF87983B.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6590BD13-DAEA-44C9-B456-C47325D2B7B6.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6590BD13-DAEA-44C9-B456-C47325D2B7B6.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-A60A3903-607D-4C6F-81CB-039A86DAAB0D.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-A60A3903-607D-4C6F-81CB-039A86DAAB0D.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-BC21FDB8-DF8A-4FDC-B5C6-7BE11BC76D9F.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-BC21FDB8-DF8A-4FDC-B5C6-7BE11BC76D9F.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item gallery-item--big"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-CD9A2812-BA2B-49CA-96CE-10DC82376E66.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-CD9A2812-BA2B-49CA-96CE-10DC82376E66.jpeg"
+                    alt="" >
+            </a>
+            <a class="gallery-item"
+                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-E33339BE-241D-4D7D-B468-95BCD2DBC190.jpeg"
+                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
+                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-E33339BE-241D-4D7D-B468-95BCD2DBC190.jpeg"
+                    alt="" >
+            </a>
+        </div>
+    </section>
 
-<section class="cta">
-    <div class="cta-content">
-        <h2 class="cta-title cta-long">Хотите такую же съёмку?</h2>
-        <a href="contact.html" class="btn cta-btn">Забронировать дату</a>
-    </div>
-</section>
+    <section class="cta">
+        <div class="cta-content">
+            <h2 class="cta-title cta-long">Хотите такую же съёмку?</h2>
+            <a href="contact.html" class="btn cta-btn">Забронировать дату</a>
+        </div>
+    </section>
 
-<!-- ЛАЙТБОКС -->
-<div class="lightbox" id="lightbox">
-    <div class="lightbox-backdrop" id="lb-backdrop"></div>
-    <button class="lightbox-close" id="lb-close" aria-label="Закрыть">×</button>
-    <button class="lightbox-arrow lightbox-prev" id="lb-prev" aria-label="Назад">‹</button>
-    <div class="lightbox-stage" id="lb-stage">
-        <img class="lightbox-img" id="lb-img" src="" alt="">
-    </div>
-    <button class="lightbox-arrow lightbox-next" id="lb-next" aria-label="Вперёд">›</button>
-</div>
+    <footer>
+        <div class="socials">
+            <a href="https://instagram.com/l.a.v_sasha" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://t.me/saaahv" target="_blank" rel="noopener">Telegram</a>
+            <a href="https://vk.com/s.sahalev" target="_blank" rel="noopener">VK</a>
+        </div>
+        <p>© Александра Левина — Фотограф</p>
+    </footer>
 
-<footer>
-    <div class="socials">
-        <a href="https://instagram.com/l.a.v_sasha" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://t.me/saaahv" target="_blank" rel="noopener">Telegram</a>
-        <a href="https://vk.com/s.sahalev" target="_blank" rel="noopener">VK</a>
-    </div>
-    <p>© Александра Левина — Фотограф</p>
-</footer>
-
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script>
-    // ===== БЛОКИРОВКА ЗУМА СТРАНИЦЫ =====
-    // 1. Ctrl + колесо мыши (десктоп)
-    document.addEventListener('wheel', (e) => {
-        if (e.ctrlKey) e.preventDefault();
-    }, { passive: false });
-
-    // 2. Ctrl + / Ctrl - / Ctrl 0 (десктоп)
-    document.addEventListener('keydown', (e) => {
-        if ((e.ctrlKey || e.metaKey) && ['+', '-', '=', '0'].includes(e.key)) {
-            e.preventDefault();
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        // ===== Telegram =====
+        if (window.Telegram && window.Telegram.WebApp) {
+            const tg = window.Telegram.WebApp;
+            tg.ready();
+            tg.expand();
+            if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
         }
-    });
 
-    // 3. Pinch-zoom на Safari (iOS)
-    document.addEventListener('gesturestart', (e) => e.preventDefault());
-    document.addEventListener('gesturechange', (e) => e.preventDefault());
-    document.addEventListener('gestureend', (e) => e.preventDefault());
-
-    // 4. Двойной тап на мобиле — отключаем через touch (не мешает клику)
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', (e) => {
-        const now = Date.now();
-        if (now - lastTouchEnd <= 300) e.preventDefault();
-        lastTouchEnd = now;
-    }, { passive: false });
-
-    // Telegram
-    if (window.Telegram && window.Telegram.WebApp) {
-        const tg = window.Telegram.WebApp;
-        tg.ready();
-        tg.expand();
-        if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
-    }
-
-    // Бургер
-    const burger = document.getElementById('burger');
-    const menu = document.getElementById('menu');
-    if (burger && menu) {
-        burger.addEventListener('click', () => menu.classList.toggle('open'));
-    }
-
-    const headerEl = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-        if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
-    }, { passive: true });
-
-    // ===== ПРЕДЗАГРУЗКА ФОТО — чтобы не «моргали» при скролле вверх =====
-    // Заменяем loading="lazy" на eager после того, как фото появилось впервые
-    const galleryImgs = document.querySelectorAll('.gallery-item img');
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    // Загружаем сразу, помечаем как eager — браузер не будет перезагружать
-                    img.loading = 'eager';
-                    img.decoding = 'async';
-                    observer.unobserve(img);
-                }
-            });
-        }, {
-            rootMargin: '300px'  // начинаем загрузку за 300px до появления
-        });
-
-        galleryImgs.forEach((img) => observer.observe(img));
-    }
-
-    // ===== ЛАЙТБОКС с FLIP-анимацией =====
-    const items = Array.from(document.querySelectorAll('.gallery-item'));
-    const lightbox = document.getElementById('lightbox');
-    const lbBackdrop = document.getElementById('lb-backdrop');
-    const lbStage = document.getElementById('lb-stage');
-    const lbImg = document.getElementById('lb-img');
-    const lbClose = document.getElementById('lb-close');
-    const lbPrev = document.getElementById('lb-prev');
-    const lbNext = document.getElementById('lb-next');
-
-    let current = 0;
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let isAnimating = false;
-
-    const DUR = {
-        open: 380,
-        close: 320,
-        slideOut: 180,
-        slideIn: 220
-    };
-
-    function preloadImages(index) {
-        for (let offset = -2; offset <= 2; offset++) {
-            const i = (index + offset + items.length) % items.length;
-            const img = new Image();
-            img.src = items[i].dataset.src;
+        // ===== Бургер =====
+        const burger = document.getElementById('burger');
+        const menu = document.getElementById('menu');
+        if (burger && menu) {
+            burger.addEventListener('click', () => menu.classList.toggle('open'));
         }
-    }
 
-    function getThumbRect(index) {
-        const thumb = items[index].querySelector('img');
-        return thumb.getBoundingClientRect();
-    }
+        const headerEl = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
+        }, {passive: true});
+    </script>
 
-    function scrollToThumb(index) {
-        const item = items[index];
-        const rect = item.getBoundingClientRect();
-        const vh = window.innerHeight;
+    <script>
+        // ===== Предзагрузка фото — убираем «моргание» при скролле вверх =====
+        document.addEventListener('DOMContentLoaded', function () {
+            const imgs = document.querySelectorAll('.gallery-item img');
 
-        if (rect.top >= 0 && rect.bottom <= vh) return;
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            // Меняем lazy на eager — браузер больше не выгружает фото
+                            img.loading = 'eager';
+                            img.decoding = 'async';
+                            observer.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '400px'   // начинаем за 400px до появления
+                });
 
-        const targetY = window.scrollY + rect.top - (vh / 2) + (rect.height / 2);
-
-        window.scrollTo({
-            top: targetY,
-            behavior: 'smooth'
-        });
-    }
-
-    function openLightbox(index) {
-        if (isAnimating) return;
-        isAnimating = true;
-
-        current = index;
-        const thumbRect = getThumbRect(index);
-        const vw = window.innerWidth;
-        const vh = window.innerHeight;
-
-        lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
-
-        lbImg.src = items[current].dataset.src;
-        preloadImages(current);
-
-        lbStage.style.transition = 'none';
-        lbStage.style.transform = `translate(${thumbRect.left + thumbRect.width / 2 - vw / 2}px, ${thumbRect.top + thumbRect.height / 2 - vh / 2}px) scale(${thumbRect.width / vw})`;
-        lbStage.style.opacity = '0';
-
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                lbStage.style.transition = `transform ${DUR.open}ms cubic-bezier(0.22, 1, 0.36, 1), opacity ${DUR.open - 80}ms ease`;
-                lbStage.style.transform = 'translate(0, 0) scale(1)';
-                lbStage.style.opacity = '1';
-                setTimeout(() => { isAnimating = false; }, DUR.open);
-            });
-        });
-    }
-
-    function closeLightbox() {
-        if (isAnimating) return;
-        isAnimating = true;
-
-        document.body.style.overflow = '';
-        scrollToThumb(current);
-
-        setTimeout(() => {
-            const thumbRect = getThumbRect(current);
-            const vw = window.innerWidth;
-            const vh = window.innerHeight;
-
-            lbStage.style.transition = `transform ${DUR.close}ms cubic-bezier(0.4, 0, 0.2, 1), opacity ${DUR.close - 60}ms ease`;
-            lbStage.style.transform = `translate(${thumbRect.left + thumbRect.width / 2 - vw / 2}px, ${thumbRect.top + thumbRect.height / 2 - vh / 2}px) scale(${thumbRect.width / vw})`;
-            lbStage.style.opacity = '0';
-
-            setTimeout(() => {
-                lightbox.classList.remove('open');
-                lbStage.style.transition = 'none';
-                lbStage.style.transform = 'none';
-                lbStage.style.opacity = '1';
-                isAnimating = false;
-            }, DUR.close);
-        }, 80);
-    }
-
-    function changePhoto(direction) {
-        if (isAnimating) return;
-        isAnimating = true;
-
-        const shift = direction === 'next' ? -70 : 70;
-
-        lbStage.style.transition = `transform ${DUR.slideOut}ms ease, opacity ${DUR.slideOut}ms ease`;
-        lbStage.style.transform = `translate(${shift}px, 0) scale(0.98)`;
-        lbStage.style.opacity = '0';
-
-        setTimeout(() => {
-            if (direction === 'next') {
-                current = (current + 1) % items.length;
+                imgs.forEach(function (img) {observer.observe(img);});
             } else {
-                current = (current - 1 + items.length) % items.length;
+                // Fallback для старых браузеров
+                imgs.forEach(function (img) {img.loading = 'eager';});
             }
-            lbImg.src = items[current].dataset.src;
-            preloadImages(current);
+        });
+    </script>
 
-            lbStage.style.transition = 'none';
-            lbStage.style.transform = `translate(${-shift}px, 0) scale(0.98)`;
-            lbStage.style.opacity = '0';
+    <!-- ===== PhotoSwipe 5 ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js"></script>
+    <script>
+        (function () {
+            if (typeof PhotoSwipeLightbox === 'undefined') {
+                console.error('PhotoSwipe не загрузился');
+                return;
+            }
 
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    lbStage.style.transition = `transform ${DUR.slideIn}ms cubic-bezier(0.22, 1, 0.36, 1), opacity ${DUR.slideIn}ms ease`;
-                    lbStage.style.transform = 'translate(0, 0) scale(1)';
-                    lbStage.style.opacity = '1';
-                    setTimeout(() => { isAnimating = false; }, DUR.slideIn);
+            const lightbox = new PhotoSwipeLightbox({
+                gallery: '.gallery',
+                children: 'a',
+                pswpModule: PhotoSwipe,
+
+                showHideAnimationType: 'zoom',
+                showAnimationDuration: 333,
+                hideAnimationDuration: 333,
+                zoomAnimationDuration: 333,
+
+                maxZoomLevel: 4,
+                secondaryZoomLevel: 1.5,
+                wheelToZoom: true,
+                pinchToClose: true,
+
+                bgOpacity: 0.95,
+                spacing: 0.12,
+                allowPanToNext: true,
+                loop: true,
+                preloaderDelay: 0,
+
+                closeTitle: 'Закрыть',
+                zoomTitle: 'Увеличить',
+                arrowPrevTitle: 'Назад',
+                arrowNextTitle: 'Вперёд',
+
+                counter: true,
+                indexIndicatorSep: ' / ',
+
+                returnFocus: true,
+            });
+
+            // ===== Скролл к миниатюре ТОЛЬКО при закрытии =====
+            lightbox.on('afterInit', function () {
+                const pswp = lightbox.pswp;
+
+                pswp.on('close', function () {
+                    // Индекс фото, на котором закрыли лайтбокс
+                    const index = pswp.currIndex;
+
+                    const thumbnails = document.querySelectorAll('.gallery-item');
+                    const currentThumb = thumbnails[index];
+                    if (!currentThumb) return;
+
+                    // Смотрим, видна ли миниатюра на экране (с запасом)
+                    const rect = currentThumb.getBoundingClientRect();
+                    const vh = window.innerHeight;
+                    const padding = 150;
+
+                    const isVisible = rect.top >= -padding && rect.bottom <= vh + padding;
+
+                    if (!isVisible) {
+                        // Мгновенный скролл — чтобы анимация закрытия шла в видимую область
+                        const targetY = window.scrollY + rect.top - (vh / 2) + (rect.height / 2);
+                        window.scrollTo({top: targetY, behavior: 'auto'});
+                    }
                 });
             });
-        }, DUR.slideOut);
-    }
 
-    items.forEach((item, i) => {
-        item.addEventListener('click', () => openLightbox(i));
-    });
+            lightbox.init();
 
-    lbClose.addEventListener('click', closeLightbox);
-    lbBackdrop.addEventListener('click', closeLightbox);
-    lbNext.addEventListener('click', () => changePhoto('next'));
-    lbPrev.addEventListener('click', () => changePhoto('prev'));
-
-    document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('open')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') changePhoto('next');
-        if (e.key === 'ArrowLeft') changePhoto('prev');
-    });
-
-    lightbox.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    lightbox.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) changePhoto('next');
-            else changePhoto('prev');
-        }
-    });
-</script>
+            // Убираем target="_blank" — PhotoSwipe перехватывает клик
+            document.querySelectorAll('.gallery-item').forEach(function (a) {
+                a.removeAttribute('target');
+                a.removeAttribute('rel');
+            });
+        })();
+    </script>
 
 </body>
+
 </html>

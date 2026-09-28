@@ -310,6 +310,7 @@ section {
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     position: relative;
     max-width: 100%;
+    will-change: transform;
 }
 
 .about-polaroid img {
@@ -360,9 +361,10 @@ section {
     background: linear-gradient(165deg, #1f1f1f 0%, #151515 100%);
     border: 1px solid var(--border);
     overflow: hidden;
-    transition: all 0.4s ease;
+    transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
     display: flex;
     flex-direction: column;
+    will-change: transform;
 }
 
 .service-card::before {
@@ -537,9 +539,10 @@ section {
 .gallery-item {
     position: relative;
     overflow: hidden;
-    cursor: pointer;
+    cursor: zoom-in;
     aspect-ratio: 3 / 4;
-    margin: 0;
+    display: block;
+    text-decoration: none;
     touch-action: manipulation;
 }
 
@@ -555,95 +558,6 @@ section {
     grid-row: span 2;
     aspect-ratio: auto;
 }
-
-/* ===== ЛАЙТБОКС с FLIP-анимацией ===== */
-.lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    touch-action: pan-x pan-y pinch-zoom;
-    overscroll-behavior: contain;
-    overflow: hidden;
-}
-
-.lightbox.open {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.lightbox-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 0;
-}
-
-.lightbox-stage {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 95vw;
-    max-height: 90vh;
-    transform-origin: center center;
-    will-change: transform, opacity;
-}
-
-.lightbox-img {
-    max-width: 95vw;
-    max-height: 90vh;
-    object-fit: contain;
-    user-select: none;
-    -webkit-user-drag: none;
-    display: block;
-    touch-action: pinch-zoom;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 42px;
-    color: #fff;
-    background: none;
-    border: none;
-    cursor: pointer;
-    line-height: 1;
-    opacity: 0.7;
-    transition: opacity 0.3s;
-    z-index: 1001;
-}
-
-.lightbox-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 60px;
-    height: 60px;
-    font-size: 48px;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.08);
-    border: none;
-    cursor: pointer;
-    line-height: 1;
-    opacity: 0.7;
-    transition: opacity 0.3s, background 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    z-index: 1001;
-}
-
-.lightbox-prev { left: 20px; }
-.lightbox-next { right: 20px; }
 
 /* ===== СОЦКНОПКИ ===== */
 .social-buttons {
@@ -785,7 +699,7 @@ footer .socials {
 }
 
 /* =====================================================
-   HOVER — только там, где есть курсор
+   HOVER — для мыши
    ===================================================== */
 @media (hover: hover) and (pointer: fine) {
     .btn:hover {
@@ -808,7 +722,6 @@ footer .socials {
         background: var(--accent);
         color: var(--bg);
     }
-
 
     .social-btn:hover {
         border-color: var(--accent);
@@ -833,20 +746,93 @@ footer .socials {
             0 30px 60px rgba(0, 0, 0, 0.6),
             0 8px 20px rgba(41, 157, 159, 0.2);
     }
+}
 
-    .lightbox-close:hover { opacity: 1; }
+/* =====================================================
+   TAP — анимации для мобильных
+   ===================================================== */
+@media (hover: none) {
+    .service-card:active {
+        border-color: var(--accent);
+        transform: translateY(-4px);
+        box-shadow: 0 15px 40px rgba(41, 157, 159, 0.15);
+    }
 
-    .lightbox-arrow:hover {
-        opacity: 1;
-        background: rgba(41, 157, 159, 0.4);
+    .about-polaroid:active {
+        transform: rotate(0deg) scale(1.02);
+        box-shadow:
+            0 30px 60px rgba(0, 0, 0, 0.6),
+            0 8px 20px rgba(41, 157, 159, 0.2);
+    }
+
+    .btn:active {
+        background: var(--accent);
+        color: var(--bg);
+    }
+
+    .btn-solid:active {
+        background: transparent;
+        color: var(--accent);
+    }
+
+    .service-btn:active {
+        background: var(--accent);
+        color: var(--bg);
+    }
+
+    .social-btn:active {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: rgba(41, 157, 159, 0.08);
+    }
+
+    .cta-btn:active {
+        background: transparent;
+        color: #0f0f0f;
     }
 }
 
-.btn:active,
-.service-btn:active,
-.social-btn:active,
-.cta-btn:active {
+/* =====================================================
+   PHOTOSWIPE — стиль под сайт
+   ===================================================== */
+.pswp {
+    --pswp-bg: rgba(15, 15, 15, 0.97);
+    --pswp-icon-color: #e8e8e8;
+    --pswp-icon-color-secondary: #299d9f;
+    --pswp-placeholder-bg: #1a1a1a;
+    --pswp-root-z-index: 1100;
+}
+
+.pswp__button {
+    color: #e8e8e8;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    transition: background 0.3s, color 0.3s;
+}
+
+.pswp__button:hover {
+    background: rgba(41, 157, 159, 0.5);
+    color: #fff;
+}
+
+.pswp__button--arrow {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.pswp__counter {
+    color: #e8e8e8;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 2px;
+    font-size: 13px;
     opacity: 0.7;
+}
+
+.pswp__top-bar {
+    background: transparent !important;
+}
+
+.pswp__img {
+    transition: opacity 0.3s ease;
 }
 
 /* =====================================================
@@ -921,14 +907,6 @@ footer .socials {
         gap: 8px;
     }
 
-    .lightbox-close { top: 15px; right: 18px; font-size: 36px; }
-
-    .lightbox-arrow {
-        width: 45px;
-        height: 45px;
-        font-size: 36px;
-    }
-
     footer { padding: 40px 20px; }
 }
 
@@ -961,17 +939,6 @@ footer .socials {
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
     }
-
-    .lightbox-close { top: 10px; right: 12px; font-size: 34px; }
-
-    .lightbox-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 28px;
-    }
-
-    .lightbox-prev { left: 8px; }
-    .lightbox-next { right: 8px; }
 
     .cta { padding: 60px 15px; }
     .cta-btn {
