@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <script>
-        // Определяем Telegram WebView до первой отрисовки.
-        // Класс ставится синхронно, поэтому Telegram-стили применяются без
-        // дополнительного layout/reflow после загрузки страницы.
+        // Определяем Telegram WebView до отрисовки — упрощённая версия
         (function() {
             const ua = navigator.userAgent || '';
             const isTelegram = /Telegram/i.test(ua) ||
-                !!window.TelegramWebviewProxy ||
-                !!(window.Telegram && window.Telegram.WebApp);
+                              (window.TelegramWebviewProxy !== undefined) ||
+                              (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData !== undefined);
 
             if (isTelegram) {
                 document.documentElement.classList.add('is-telegram');
@@ -144,11 +142,7 @@
         const tg = window.Telegram.WebApp;
         tg.ready();
         tg.expand();
-
-        // Не даём Telegram перехватывать вертикальный свайп страницы.
-        if (typeof tg.disableVerticalSwipes === 'function') {
-            tg.disableVerticalSwipes();
-        }
+        if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
     }
 
     // ===== Бургер =====
@@ -158,13 +152,97 @@
         burger.addEventListener('click', () => menu.classList.toggle('open'));
     }
 
-    // В Telegram WebView нет JS-обработчика scroll: шапка работает через CSS sticky.
+    // ===== Скролл-эффект шапки =====
+    const headerEl = document.getElementById('header');
+    if (!document.documentElement.classList.contains('is-telegram')) {
+        window.addEventListener('scroll', () => {
+            if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+    }
 
-    // В Telegram WebView полностью отключаем JS-обработку touch/pointer для pressed-состояний.
-    // Это оставляет жест скролла на 100% нативному WebView.
+    // ===== Анимация долгого нажатия (только на тач-устройствах) =====
+    // В Telegram WebView не используем touchmove + setTimeout на каждом
+    // движении пальца: это создаёт очередь таймеров во время скролла.
+    (function() {
+        const isTouch = window.matchMedia('(hover: none)').matches;
+        if (!isTouch) return;
 
-    // Не вмешиваемся в contextmenu/touch lifecycle Telegram WebView.
+        const HOLD_TIME = 300;
+        const MOVE_LIMIT = 10;
 
+        function setupLongPress(selector) {
+            document.querySelectorAll(selector).forEach(function(el) {
+                let timer = null;
+                let startX = 0;
+                let startY = 0;
+                let active = false;
+
+                function clearPress(removeClass) {
+                    if (timer !== null) {
+                        clearTimeout(timer);
+                        timer = null;
+                    }
+                    active = false;
+                    if (removeClass) el.classList.remove('pressed');
+                }
+
+                function startPress(e) {
+                    if (e.pointerType && e.pointerType !== 'touch') return;
+                    if (e.isPrimary === false) return;
+
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    active = true;
+
+                    if (timer !== null) clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        if (active) el.classList.add('pressed');
+                        timer = null;
+                    }, HOLD_TIME);
+                }
+
+                function movePress(e) {
+                    if (!active) return;
+
+                    const dx = e.clientX - startX;
+                    const dy = e.clientY - startY;
+
+                    if ((dx * dx + dy * dy) > MOVE_LIMIT * MOVE_LIMIT) {
+                        clearPress(true);
+                    }
+                }
+
+                function endPress() {
+                    clearPress(true);
+                }
+
+                el.addEventListener('pointerdown', startPress, { passive: true });
+                el.addEventListener('pointermove', movePress, { passive: true });
+                el.addEventListener('pointerup', endPress, { passive: true });
+                el.addEventListener('pointercancel', endPress, { passive: true });
+                el.addEventListener('pointerleave', endPress, { passive: true });
+            });
+        }
+
+        // Скрипт находится в конце body — DOM уже готов.
+        setupLongPress('.service-card');
+        setupLongPress('.about-polaroid');
+        setupLongPress('.btn');
+        setupLongPress('.btn-solid');
+        setupLongPress('.service-btn');
+        setupLongPress('.social-btn');
+        setupLongPress('.cta-btn');
+    })();
+
+    // ===== Блокировка контекстного меню =====
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.closest('a[href^="mailto:"]')) return;
+        if (e.target.closest('a[href^="tel:"]')) return;
+        if (e.target.closest('.contact-item')) return;
+        if (e.target.closest('.about-text p')) return;
+        if (e.target.closest('.about-lead')) return;
+        e.preventDefault();
+    });
 </script>
 
 </body>

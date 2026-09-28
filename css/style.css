@@ -8,7 +8,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-    overflow-anchor: auto;
+    overflow-anchor: none;
     -webkit-text-size-adjust: 100%;
     touch-action: manipulation;
 }
@@ -853,96 +853,94 @@ footer .socials {
 }
 
 /* =====================================================
-   TELEGRAM WEBVIEW — ОПТИМИЗАЦИЯ БЕЗ ОТДЕЛЬНОГО ДИЗАЙНА
+   TELEGRAM WEBVIEW — УПРОЩЁННАЯ ВЕРСИЯ
    ===================================================== */
 
 html.is-telegram {
     /* Telegram WebView: отдаём вертикальный скролл полностью нативному движку. */
     scroll-behavior: auto;
-    overflow-anchor: auto;
-    overscroll-behavior-y: auto;
-    touch-action: auto;
+    overscroll-behavior-y: none;
+    -webkit-text-size-adjust: 100%;
 }
 
 /*
- * Самая важная оптимизация.
- *
- * В Telegram WebView не используем fixed/transform/will-change для шапки.
- * Sticky остаётся в обычном scroll/layout pipeline и не требует отдельного
- * compositing-слоя, который на некоторых версиях Android WebView может
- * микродёргаться при резкой смене направления fling-scroll.
+ * Оставляем fixed-header как в обычном браузере, но убираем blur.
+ * backdrop-filter особенно дорог при частой смене направления скролла.
+ * Отдельный composited layer делает движение fixed-элемента стабильнее.
  */
 html.is-telegram header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
-    background: rgba(41, 157, 159, 0.96);
+    left: 0;
+    right: 0;
+    background: rgba(41, 157, 159, 0.95);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    border-bottom: 1px solid rgba(41, 157, 159, 0.35);
-    transition: none;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform;
 }
 
 html.is-telegram header.scrolled {
     border-bottom-color: rgba(41, 157, 159, 0.35);
 }
 
-/* Не создаём scroll-dependent визуальные эффекты. */
+/* Не запускаем анимации/изменение layout, завязанные на scroll. */
 html.is-telegram .hero,
 html.is-telegram .services-section {
-    background-attachment: scroll;
+    background: #0f0f0f !important;
+    position: relative;
 }
 
-/* В WebView убираем дополнительные декоративные слои, но оставляем сами фото. */
+/* Telegram WebView плохо переносит дорогие фоновые слои при fling-scroll.
+   Сохраняем изображения и внешний вид, но исключаем лишние псевдослои. */
 html.is-telegram .services-section::before,
-html.is-telegram .services-section::after,
-html.is-telegram .cta::before {
+html.is-telegram .services-section::after {
     display: none !important;
 }
 
-/* Простые непрозрачные карточки — меньше blending/compositing во время fling. */
+/* Карточки не должны создавать отдельный тяжёлый compositing layer на каждом
+   touch-событии. Небольшой pressed-эффект сохраняется. */
 html.is-telegram .service-card {
-    background: #1a1a1a !important;
+    background: rgba(20, 20, 20, 0.92);
     transition: none;
 }
 
+html.is-telegram .service-card.pressed {
+    box-shadow: none;
+    transform: translateY(-2px);
+}
+
+/* Полароид оставляем визуально близким к браузеру, но без дорогой анимации. */
 html.is-telegram .about-polaroid {
-    transform: none;
     transition: none;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Никаких transition у элементов, которые часто попадают под палец. */
+html.is-telegram .about-polaroid.pressed {
+    transform: rotate(-2deg) scale(1.01);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Переходы кнопок короткие, но не отключены полностью. */
 html.is-telegram .btn,
 html.is-telegram .btn-solid,
 html.is-telegram .service-btn,
 html.is-telegram .social-btn,
 html.is-telegram .cta-btn,
 html.is-telegram a {
-    transition: none;
+    transition-duration: 0.15s;
 }
 
-/* Не меняем геометрию изображений во время скролла. */
+/* Не анимируем изображения при прокрутке. */
 html.is-telegram img {
-    transform: none;
-    -webkit-transform: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 html.is-telegram .gallery-item img {
     transition: none;
-}
-
-/* pressed-анимации отключены: они не нужны во время scroll gesture. */
-html.is-telegram .pressed,
-html.is-telegram .service-card.pressed,
-html.is-telegram .about-polaroid.pressed,
-html.is-telegram .btn.pressed,
-html.is-telegram .btn-solid.pressed,
-html.is-telegram .service-btn.pressed,
-html.is-telegram .social-btn.pressed,
-html.is-telegram .cta-btn.pressed {
-    transform: none !important;
-    box-shadow: none !important;
 }
 
 html.is-telegram .pswp {
