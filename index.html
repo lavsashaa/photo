@@ -152,13 +152,11 @@
         burger.addEventListener('click', () => menu.classList.toggle('open'));
     }
 
-    // ===== Скролл-эффект шапки (только не в Telegram) =====
+    // ===== Скролл-эффект шапки =====
     const headerEl = document.getElementById('header');
-    if (!document.documentElement.classList.contains('is-telegram')) {
-        window.addEventListener('scroll', () => {
-            if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
-        }, { passive: true });
-    }
+    window.addEventListener('scroll', () => {
+        if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
 
     // ===== Анимация долгого нажатия =====
     (function() {

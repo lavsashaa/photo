@@ -861,82 +861,30 @@ footer .socials {
 }
 
 /* =====================================================
-   TELEGRAM WEBVIEW — УПРОЩЁННАЯ ВЕРСИЯ
+   TELEGRAM WEBVIEW — минимальные отличия от браузера
    ===================================================== */
 
+/* Плавный скролл в WebView может «дёргать» — оставляем auto */
 html.is-telegram {
     scroll-behavior: auto;
 }
 
+/* blur в шапке — самая тяжёлая операция для WebView.
+   Заменяем на плотный однотонный фон. */
 html.is-telegram header {
     background: rgba(41, 157, 159, 0.95);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
 }
 
-html.is-telegram header.scrolled {
-    border-bottom-color: rgba(41, 157, 159, 0.35);
-}
-
-/*
- * Hero в Telegram:
- * - высота фиксируется через CSS-переменную --hero-height, которую
- *   устанавливает JS один раз при загрузке (см. index.html);
- * - contain изолирует layout, чтобы адресная строка Telegram
- *   не пересчитывала размеры блока при скролле;
- * - фон — та же фотография, что и в браузере.
- */
+/* Hero: высота через JS-переменную + contain, чтобы
+   адресная строка Telegram не пересчитывала layout.
+   Фон, анимации, hover — как в браузере. */
 html.is-telegram .hero {
     height: var(--hero-height, 100svh);
     min-height: 0;
     max-height: none;
     contain: size layout style;
-    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
-                url('../Photos/IMG_1112.JPG') 20% center / cover no-repeat scroll;
-}
-
-html.is-telegram .services-section {
-    background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.92)),
-                url('../Photos/check.JPG') center/cover no-repeat scroll;
-}
-
-html.is-telegram .services-section .service-card {
-    background: rgba(20, 20, 20, 0.92);
-}
-
-html.is-telegram .service-card {
-    transition: none;
-}
-
-html.is-telegram .service-card.pressed {
-    box-shadow: none;
-    transform: translateY(-2px);
-}
-
-html.is-telegram .about-polaroid {
-    transition: none;
-}
-
-html.is-telegram .about-polaroid.pressed {
-    transform: rotate(-2deg) scale(1.01);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-}
-
-html.is-telegram .btn,
-html.is-telegram .btn-solid,
-html.is-telegram .service-btn,
-html.is-telegram .social-btn,
-html.is-telegram .cta-btn,
-html.is-telegram a {
-    transition-duration: 0.15s;
-}
-
-html.is-telegram .gallery-item img {
-    transition: none;
-}
-
-html.is-telegram .pswp {
-    --pswp-bg: rgba(15, 15, 15, 0.98);
 }
 
 /* =====================================================
