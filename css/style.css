@@ -872,7 +872,7 @@ html.is-telegram {
 /* blur в шапке — самая тяжёлая операция для WebView.
    Заменяем на плотный однотонный фон. */
 html.is-telegram header {
-    background: rgba(41, 157, 159, 0.25);
+    background: rgba(41, 157, 159, 0.5);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
