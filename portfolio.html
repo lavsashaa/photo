@@ -1,351 +1,275 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
+    <script>
+        (function() {
+            const ua = navigator.userAgent || '';
+            const isTelegram = /Telegram/i.test(ua) ||
+                              (window.TelegramWebviewProxy !== undefined) ||
+                              (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData !== undefined);
+            if (isTelegram) {
+                document.documentElement.classList.add('is-telegram');
+            }
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Портфолио — Александра Левина</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
 </head>
-
 <body>
 
-    <header id="header">
-        <a href="index.html" class="logo">LAVSASHA</a>
-        <nav>
-            <ul id="menu">
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="portfolio.html" class="active">Портфолио</a></li>
-                <li><a href="contact.html">Контакты</a></li>
-            </ul>
-        </nav>
-        <button class="burger" id="burger" aria-label="Меню">
-            <span></span><span></span><span></span>
-        </button>
-    </header>
+<header id="header">
+    <a href="index.html" class="logo">LAVSASHA</a>
+    <nav>
+        <ul id="menu">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="portfolio.html" class="active">Портфолио</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+        </ul>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+    </button>
+</header>
 
-    <section style="padding-top: 140px;">
-        <div class="section-title">Портфолио</div>
-        <h1 class="section-heading">Избранные съёмки</h1>
+<section style="padding-top: 140px;">
+    <div class="section-title">Портфолио</div>
+    <h1 class="section-heading">Избранные съёмки</h1>
 
-        <div class="gallery">
-            <a class="gallery-item gallery-item--big"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0417.jpeg" data-pswp-width="1080"
-                data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0417.jpeg" alt="" >
-            </a>
-            <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0431.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0431.jpeg" alt="" >
-            </a>
-            <a class="gallery-item"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_g7rewuh9lu.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_g7rewuh9lu.jpeg" alt=""
-                    >
-            </a>
-            <a class="gallery-item"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_mhPcKcpdu9.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_mhPcKcpdu9.jpeg" alt=""
-                    >
-            </a>
-            <a class="gallery-item gallery-item--big"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output.jpeg" data-pswp-width="1080"
-                data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output.jpeg" alt=""
-                    >
-            </a>
-            <a class="gallery-item"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-EF9F745C-69B1-4141-B741-FA93FA65D6C5.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-EF9F745C-69B1-4141-B741-FA93FA65D6C5.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item gallery-item--big"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-0F8A7D74-8CD7-4357-B97A-0D76F0FF312B.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-0F8A7D74-8CD7-4357-B97A-0D76F0FF312B.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6BF41503-2DDD-4062-9935-BAC082D1F4E4.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6BF41503-2DDD-4062-9935-BAC082D1F4E4.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-8FCA261E-25F5-47E3-A8C3-606E70725999.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-8FCA261E-25F5-47E3-A8C3-606E70725999.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-24E57BD6-0F9F-49E4-8EAC-4124D50D4620.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-24E57BD6-0F9F-49E4-8EAC-4124D50D4620.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item gallery-item--big"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-49D4BDBD-46FB-4C00-AEF1-B0F33342915D.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-49D4BDBD-46FB-4C00-AEF1-B0F33342915D.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-F9F8FB09-1A11-4EB8-94AB-CED8C017ED61.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-F9F8FB09-1A11-4EB8-94AB-CED8C017ED61.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item gallery-item--big"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-1097E998-1FE7-4160-BA65-FD5AFF87983B.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-1097E998-1FE7-4160-BA65-FD5AFF87983B.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6590BD13-DAEA-44C9-B456-C47325D2B7B6.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6590BD13-DAEA-44C9-B456-C47325D2B7B6.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-A60A3903-607D-4C6F-81CB-039A86DAAB0D.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-A60A3903-607D-4C6F-81CB-039A86DAAB0D.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-BC21FDB8-DF8A-4FDC-B5C6-7BE11BC76D9F.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-BC21FDB8-DF8A-4FDC-B5C6-7BE11BC76D9F.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item gallery-item--big"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-CD9A2812-BA2B-49CA-96CE-10DC82376E66.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-CD9A2812-BA2B-49CA-96CE-10DC82376E66.jpeg"
-                    alt="" >
-            </a>
-            <a class="gallery-item"
-                href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-E33339BE-241D-4D7D-B468-95BCD2DBC190.jpeg"
-                data-pswp-width="1080" data-pswp-height="1440" target="_blank" rel="noopener">
-                <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-E33339BE-241D-4D7D-B468-95BCD2DBC190.jpeg"
-                    alt="" >
-            </a>
-        </div>
-    </section>
+    <div class="gallery">
+        <a class="gallery-item gallery-item--big" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0417.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0417.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0431.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/IMG_0431.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_g7rewuh9lu.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_g7rewuh9lu.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_mhPcKcpdu9.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output_mhPcKcpdu9.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item gallery-item--big" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/photo-output.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-EF9F745C-69B1-4141-B741-FA93FA65D6C5.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-EF9F745C-69B1-4141-B741-FA93FA65D6C5.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item gallery-item--big" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-0F8A7D74-8CD7-4357-B97A-0D76F0FF312B.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-0F8A7D74-8CD7-4357-B97A-0D76F0FF312B.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6BF41503-2DDD-4062-9935-BAC082D1F4E4.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6BF41503-2DDD-4062-9935-BAC082D1F4E4.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-8FCA261E-25F5-47E3-A8C3-606E70725999.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-8FCA261E-25F5-47E3-A8C3-606E70725999.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-24E57BD6-0F9F-49E4-8EAC-4124D50D4620.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-24E57BD6-0F9F-49E4-8EAC-4124D50D4620.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item gallery-item--big" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-49D4BDBD-46FB-4C00-AEF1-B0F33342915D.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-49D4BDBD-46FB-4C00-AEF1-B0F33342915D.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-F9F8FB09-1A11-4EB8-94AB-CED8C017ED61.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-F9F8FB09-1A11-4EB8-94AB-CED8C017ED61.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item gallery-item--big" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-1097E998-1FE7-4160-BA65-FD5AFF87983B.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-1097E998-1FE7-4160-BA65-FD5AFF87983B.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6590BD13-DAEA-44C9-B456-C47325D2B7B6.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-6590BD13-DAEA-44C9-B456-C47325D2B7B6.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-A60A3903-607D-4C6F-81CB-039A86DAAB0D.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-A60A3903-607D-4C6F-81CB-039A86DAAB0D.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-BC21FDB8-DF8A-4FDC-B5C6-7BE11BC76D9F.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-BC21FDB8-DF8A-4FDC-B5C6-7BE11BC76D9F.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item gallery-item--big" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-CD9A2812-BA2B-49CA-96CE-10DC82376E66.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-CD9A2812-BA2B-49CA-96CE-10DC82376E66.jpeg" alt="" loading="lazy">
+        </a>
+        <a class="gallery-item" href="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-E33339BE-241D-4D7D-B468-95BCD2DBC190.jpeg" data-pswp-width="1080" data-pswp-height="1440">
+            <img src="https://cdn.jsdelivr.net/gh/lavsashaa/photo@main/Photos/RNI-Films-IMG-E33339BE-241D-4D7D-B468-95BCD2DBC190.jpeg" alt="" loading="lazy">
+        </a>
+    </div>
+</section>
 
-    <section class="cta">
-        <div class="cta-content">
-            <h2 class="cta-title cta-long">Хотите такую же съёмку?</h2>
-            <a href="contact.html" class="btn cta-btn">Забронировать дату</a>
-        </div>
-    </section>
+<section class="cta">
+    <div class="cta-content">
+        <h2 class="cta-title cta-long">Хотите такую же съёмку?</h2>
+        <a href="contact.html" class="btn cta-btn">Забронировать дату</a>
+    </div>
+</section>
 
-    <footer>
-        <div class="socials">
-            <a href="https://instagram.com/l.a.v_sasha" target="_blank" rel="noopener">Instagram</a>
-            <a href="https://t.me/saaahv" target="_blank" rel="noopener">Telegram</a>
-            <a href="https://vk.com/s.sahalev" target="_blank" rel="noopener">VK</a>
-        </div>
-        <p>© Александра Левина — Фотограф</p>
-    </footer>
+<footer>
+    <div class="socials">
+        <a href="https://instagram.com/l.a.v_sasha" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://t.me/saaahv" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://vk.com/s.sahalev" target="_blank" rel="noopener">VK</a>
+    </div>
+    <p>© Александра Левина — Фотограф</p>
+</footer>
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-        // ===== Telegram =====
-        if (window.Telegram && window.Telegram.WebApp) {
-            const tg = window.Telegram.WebApp;
-            tg.ready();
-            tg.expand();
-            if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
-        }
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+    // ===== Telegram =====
+    if (window.Telegram && window.Telegram.WebApp) {
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
+    }
 
-        // ===== Бургер =====
-        const burger = document.getElementById('burger');
-        const menu = document.getElementById('menu');
-        if (burger && menu) {
-            burger.addEventListener('click', () => menu.classList.toggle('open'));
-        }
+    // ===== Бургер =====
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    if (burger && menu) {
+        burger.addEventListener('click', () => menu.classList.toggle('open'));
+    }
 
-        const headerEl = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
-        }, {passive: true});
-    </script>
+    // ===== Скролл-эффект шапки =====
+    const headerEl = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
 
-    <script>
-        // ===== Предзагрузка фото — убираем «моргание» при скролле вверх =====
-        document.addEventListener('DOMContentLoaded', function () {
-            const imgs = document.querySelectorAll('.gallery-item img');
-
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            // Меняем lazy на eager — браузер больше не выгружает фото
-                            img.loading = 'eager';
-                            img.decoding = 'async';
-                            observer.unobserve(img);
-                        }
-                    });
-                }, {
-                    rootMargin: '400px'   // начинаем за 400px до появления
-                });
-
-                imgs.forEach(function (img) {observer.observe(img);});
-            } else {
-                // Fallback для старых браузеров
-                imgs.forEach(function (img) {img.loading = 'eager';});
-            }
+    // ===== Предзагрузка фото (убирает мигание при скролле вверх) =====
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.gallery-item img').forEach(function(img) {
+            img.loading = 'eager';
+            img.decoding = 'async';
         });
-    </script>
+    });
 
-    <!-- ===== PhotoSwipe 5 ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js"></script>
-    <script>
-        (function () {
-            if (typeof PhotoSwipeLightbox === 'undefined') {
-                console.error('PhotoSwipe не загрузился');
-                return;
-            }
+    // ===== Анимация долгого нажатия =====
+    (function() {
+        const isTouch = window.matchMedia('(hover: none)').matches;
+        if (!isTouch) return;
 
-            const lightbox = new PhotoSwipeLightbox({
-                gallery: '.gallery',
-                children: 'a',
-                pswpModule: PhotoSwipe,
+        const HOLD_TIME = 300;
 
-                showHideAnimationType: 'zoom',
-                showAnimationDuration: 333,
-                hideAnimationDuration: 333,
-                zoomAnimationDuration: 333,
+        function setupLongPress(selector) {
+            document.querySelectorAll(selector).forEach(function(el) {
+                let timer = null;
 
-                maxZoomLevel: 4,
-                secondaryZoomLevel: 1.5,
-                wheelToZoom: true,
-                pinchToClose: true,
+                function startPress(e) {
+                    if (e.touches && e.touches.length > 1) return;
+                    timer = setTimeout(function() {
+                        el.classList.add('pressed');
+                    }, HOLD_TIME);
+                }
 
-                bgOpacity: 0.95,
-                spacing: 0.12,
-                allowPanToNext: true,
-                loop: true,
-                preloaderDelay: 0,
-
-                closeTitle: 'Закрыть',
-                zoomTitle: 'Увеличить',
-                arrowPrevTitle: 'Назад',
-                arrowNextTitle: 'Вперёд',
-
-                counter: true,
-                indexIndicatorSep: ' / ',
-
-                returnFocus: true,
-            });
-
-            // ===== Скролл к миниатюре ТОЛЬКО при закрытии =====
-            lightbox.on('afterInit', function () {
-                const pswp = lightbox.pswp;
-
-                pswp.on('close', function () {
-                    // Индекс фото, на котором закрыли лайтбокс
-                    const index = pswp.currIndex;
-
-                    const thumbnails = document.querySelectorAll('.gallery-item');
-                    const currentThumb = thumbnails[index];
-                    if (!currentThumb) return;
-
-                    // Смотрим, видна ли миниатюра на экране (с запасом)
-                    const rect = currentThumb.getBoundingClientRect();
-                    const vh = window.innerHeight;
-                    const padding = 150;
-
-                    const isVisible = rect.top >= -padding && rect.bottom <= vh + padding;
-
-                    if (!isVisible) {
-                        // Мгновенный скролл — чтобы анимация закрытия шла в видимую область
-                        const targetY = window.scrollY + rect.top - (vh / 2) + (rect.height / 2);
-                        window.scrollTo({top: targetY, behavior: 'auto'});
+                function cancelPress() {
+                    if (timer) {
+                        clearTimeout(timer);
+                        timer = null;
                     }
-                });
+                    setTimeout(function() {
+                        el.classList.remove('pressed');
+                    }, 150);
+                }
+
+                el.addEventListener('touchstart', startPress, { passive: true });
+                el.addEventListener('touchend', cancelPress, { passive: true });
+                el.addEventListener('touchcancel', cancelPress, { passive: true });
+                el.addEventListener('touchmove', cancelPress, { passive: true });
+                el.addEventListener('mousedown', startPress);
+                el.addEventListener('mouseup', cancelPress);
+                el.addEventListener('mouseleave', cancelPress);
             });
+        }
 
-            lightbox.init();
+        document.addEventListener('DOMContentLoaded', function() {
+            setupLongPress('.btn');
+            setupLongPress('.cta-btn');
+        });
+    })();
 
-            // Убираем target="_blank" — PhotoSwipe перехватывает клик
-            document.querySelectorAll('.gallery-item').forEach(function (a) {
-                a.removeAttribute('target');
-                a.removeAttribute('rel');
+    // ===== Блокировка контекстного меню =====
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.closest('a')) {
+            // Для галереи — блокируем, PhotoSwipe перехватит
+            e.preventDefault();
+        }
+    });
+</script>
+
+<!-- ===== PhotoSwipe 5 ===== -->
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js"></script>
+<script>
+    (function() {
+        if (typeof PhotoSwipeLightbox === 'undefined') {
+            console.error('PhotoSwipe не загрузился');
+            return;
+        }
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '.gallery',
+            children: 'a',
+            pswpModule: PhotoSwipe,
+
+            showHideAnimationType: 'zoom',
+            showAnimationDuration: 333,
+            hideAnimationDuration: 333,
+            zoomAnimationDuration: 333,
+
+            maxZoomLevel: 4,
+            secondaryZoomLevel: 1.5,
+            wheelToZoom: true,
+            pinchToClose: true,
+
+            bgOpacity: 0.95,
+            spacing: 0.12,
+            allowPanToNext: true,
+            loop: true,
+            preloaderDelay: 0,
+
+            closeTitle: 'Закрыть',
+            zoomTitle: 'Увеличить',
+            arrowPrevTitle: 'Назад',
+            arrowNextTitle: 'Вперёд',
+
+            counter: true,
+            indexIndicatorSep: ' / ',
+
+            returnFocus: true,
+        });
+
+        // ===== Скролл к миниатюре ТОЛЬКО при закрытии =====
+        lightbox.on('afterInit', function() {
+            const pswp = lightbox.pswp;
+
+            pswp.on('close', function() {
+                const index = pswp.currIndex;
+                const thumbnails = document.querySelectorAll('.gallery-item');
+                const currentThumb = thumbnails[index];
+                if (!currentThumb) return;
+
+                const rect = currentThumb.getBoundingClientRect();
+                const vh = window.innerHeight;
+                const padding = 150;
+
+                const isVisible = rect.top >= -padding && rect.bottom <= vh + padding;
+
+                if (!isVisible) {
+                    const targetY = window.scrollY + rect.top - (vh / 2) + (rect.height / 2);
+                    window.scrollTo({ top: targetY, behavior: 'auto' });
+                }
             });
-        })();
-    </script>
+        });
 
-    <script>
-        // ===== Анимация долгого нажатия (только на мобильных) =====
-        (function() {
-            // Работает только на устройствах без курсора (тач)
-            const isTouch = window.matchMedia('(hover: none)').matches;
-            if (!isTouch) return;
+        lightbox.init();
 
-            const HOLD_TIME = 300; // мс — сколько держать палец
-
-            function setupLongPress(selector) {
-                const elements = document.querySelectorAll(selector);
-
-                elements.forEach(function(el) {
-                    let timer = null;
-                    let pressed = false;
-
-                    function startPress(e) {
-                        // Не срабатываем при мультитаче (зум)
-                        if (e.touches && e.touches.length > 1) return;
-
-                        pressed = false;
-                        timer = setTimeout(function() {
-                            el.classList.add('pressed');
-                            pressed = true;
-                        }, HOLD_TIME);
-                    }
-
-                    function cancelPress() {
-                        if (timer) {
-                            clearTimeout(timer);
-                            timer = null;
-                        }
-                        // Убираем анимацию с небольшой задержкой, чтобы её было видно
-                        setTimeout(function() {
-                            el.classList.remove('pressed');
-                        }, 150);
-                    }
-
-                    el.addEventListener('touchstart', startPress, { passive: true });
-                    el.addEventListener('touchend', cancelPress, { passive: true });
-                    el.addEventListener('touchcancel', cancelPress, { passive: true });
-                    el.addEventListener('touchmove', cancelPress, { passive: true });
-
-                    // Также для стилуса / мыши (Safari с трекпадом и т.п.)
-                    el.addEventListener('mousedown', startPress);
-                    el.addEventListener('mouseup', cancelPress);
-                    el.addEventListener('mouseleave', cancelPress);
-                });
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-                setupLongPress('.service-card');
-                setupLongPress('.about-polaroid');
-                setupLongPress('.btn');
-                setupLongPress('.btn-solid');
-                setupLongPress('.service-btn');
-                setupLongPress('.social-btn');
-                setupLongPress('.cta-btn');
-            });
-        })();
-    </script>
+        // Убираем target="_blank" — PhotoSwipe перехватывает клик
+        document.querySelectorAll('.gallery-item').forEach(function(a) {
+            a.removeAttribute('target');
+            a.removeAttribute('rel');
+        });
+    })();
+</script>
 
 </body>
-
 </html>

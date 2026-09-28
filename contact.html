@@ -2,6 +2,17 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <script>
+        (function() {
+            const ua = navigator.userAgent || '';
+            const isTelegram = /Telegram/i.test(ua) ||
+                              (window.TelegramWebviewProxy !== undefined) ||
+                              (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData !== undefined);
+            if (isTelegram) {
+                document.documentElement.classList.add('is-telegram');
+            }
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Контакты — Александра Левина</title>
     <link rel="stylesheet" href="css/style.css">
@@ -83,7 +94,7 @@
         if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
 
-    // ===== Анимация долгого нажатия (только на тач-устройствах) =====
+    // ===== Анимация долгого нажатия =====
     (function() {
         const isTouch = window.matchMedia('(hover: none)').matches;
         if (!isTouch) return;
@@ -126,9 +137,16 @@
             setupLongPress('.btn');
             setupLongPress('.btn-solid');
             setupLongPress('.cta-btn');
-            setupLongPress('.contact-item a');
         });
     })();
+
+    // ===== Блокировка контекстного меню (кроме копируемого текста) =====
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.closest('a[href^="mailto:"]')) return;
+        if (e.target.closest('a[href^="tel:"]')) return;
+        if (e.target.closest('.contact-item')) return;
+        e.preventDefault();
+    });
 </script>
 
 </body>

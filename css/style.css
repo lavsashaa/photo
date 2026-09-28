@@ -28,7 +28,6 @@ body {
     user-select: none;
 }
 
-/* Разрешаем выделение только там, где нужно (email, текст о себе) */
 .contact-item a,
 .contact-item > div,
 .about-text p,
@@ -771,7 +770,7 @@ footer .socials {
 }
 
 /* =====================================================
-   PRESSED — для тач-устройств (через JS, при долгом нажатии)
+   PRESSED — долгое нажатие на тач
    ===================================================== */
 .service-card.pressed {
     border-color: var(--accent);
@@ -813,7 +812,7 @@ footer .socials {
 }
 
 /* =====================================================
-   PHOTOSWIPE — стиль под сайт
+   PHOTOSWIPE
    ===================================================== */
 .pswp {
     --pswp-bg: rgba(15, 15, 15, 0.97);
@@ -856,6 +855,123 @@ footer .socials {
 }
 
 /* =====================================================
+   TELEGRAM WEBVIEW — УПРОЩЁННАЯ ВЕРСИЯ
+   ===================================================== */
+html.is-telegram {
+    scroll-behavior: auto;
+}
+
+html.is-telegram * {
+    will-change: auto !important;
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+}
+
+/* Шапка — без размытия */
+html.is-telegram header {
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+html.is-telegram header.scrolled {
+    background: rgba(15, 15, 15, 0.98);
+}
+
+/* HERO — без градиента поверх фото */
+html.is-telegram .hero {
+    background: url('../Photos/IMG_1112.JPG') 20% center / cover no-repeat scroll;
+    position: relative;
+}
+
+html.is-telegram .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    pointer-events: none;
+    z-index: 1;
+}
+
+html.is-telegram .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* УСЛУГИ — без градиента поверх фото */
+html.is-telegram .services-section {
+    background: url('../Photos/check.JPG') center/cover no-repeat scroll;
+    position: relative;
+}
+
+html.is-telegram .services-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.9);
+    pointer-events: none;
+    z-index: 0;
+}
+
+html.is-telegram .services-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+html.is-telegram .services-section::after {
+    display: none;
+}
+
+/* CTA — без радиального градиента */
+html.is-telegram .cta::before {
+    display: none;
+}
+
+/* Карточки — упрощённые тени */
+html.is-telegram .service-card {
+    background: #1a1a1a;
+}
+
+html.is-telegram .service-card.pressed {
+    box-shadow: none;
+    transform: translateY(-2px);
+}
+
+/* Полароид — без наклона */
+html.is-telegram .about-polaroid {
+    transform: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+html.is-telegram .about-polaroid.pressed {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Кнопки — короткие переходы */
+html.is-telegram .btn,
+html.is-telegram .btn-solid,
+html.is-telegram .service-btn,
+html.is-telegram .social-btn,
+html.is-telegram .cta-btn {
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Галерея — без transition */
+html.is-telegram .gallery-item img {
+    transition: none;
+}
+
+html.is-telegram a,
+html.is-telegram .logo {
+    transition: color 0.2s ease;
+}
+
+html.is-telegram .pswp {
+    --pswp-bg: rgba(15, 15, 15, 0.98);
+}
+
+/* =====================================================
    АДАПТИВ
    ===================================================== */
 
@@ -867,7 +983,6 @@ footer .socials {
 }
 
 @media (max-width: 900px) {
-    /* Шапка без backdrop-filter — стабильность в Telegram */
     header {
         padding: 20px 25px;
         background: rgba(41, 157, 159, 0.95);
@@ -923,14 +1038,8 @@ footer .socials {
         white-space: normal;
     }
 
-    /* CTA — убираем тяжёлый градиент */
     .cta::before {
         display: none;
-    }
-
-    /* Карточки — упрощаем тени для WebView */
-    .service-card.pressed {
-        box-shadow: none;
     }
 
     .gallery {

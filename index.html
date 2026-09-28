@@ -2,6 +2,19 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <script>
+        // Определяем Telegram WebView до отрисовки — упрощённая версия
+        (function() {
+            const ua = navigator.userAgent || '';
+            const isTelegram = /Telegram/i.test(ua) ||
+                              (window.TelegramWebviewProxy !== undefined) ||
+                              (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData !== undefined);
+
+            if (isTelegram) {
+                document.documentElement.classList.add('is-telegram');
+            }
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Александра Левина — Фотограф</title>
     <link rel="stylesheet" href="css/style.css">
@@ -124,7 +137,7 @@
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
-    // Telegram
+    // ===== Telegram =====
     if (window.Telegram && window.Telegram.WebApp) {
         const tg = window.Telegram.WebApp;
         tg.ready();
@@ -132,19 +145,20 @@
         if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
     }
 
-    // Бургер
+    // ===== Бургер =====
     const burger = document.getElementById('burger');
     const menu = document.getElementById('menu');
     if (burger && menu) {
         burger.addEventListener('click', () => menu.classList.toggle('open'));
     }
 
+    // ===== Скролл-эффект шапки =====
     const headerEl = document.getElementById('header');
     window.addEventListener('scroll', () => {
         if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
 
-    // ===== Анимация долгого нажатия =====
+    // ===== Анимация долгого нажатия (только на тач-устройствах) =====
     (function() {
         const isTouch = window.matchMedia('(hover: none)').matches;
         if (!isTouch) return;
@@ -192,6 +206,16 @@
             setupLongPress('.cta-btn');
         });
     })();
+
+    // ===== Блокировка контекстного меню =====
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.closest('a[href^="mailto:"]')) return;
+        if (e.target.closest('a[href^="tel:"]')) return;
+        if (e.target.closest('.contact-item')) return;
+        if (e.target.closest('.about-text p')) return;
+        if (e.target.closest('.about-lead')) return;
+        e.preventDefault();
+    });
 </script>
 
 </body>
