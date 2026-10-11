@@ -1100,12 +1100,13 @@ html.is-telegram .hero {
         -webkit-backdrop-filter: blur(12px);
     }
 
-    nav ul {
+      nav ul {
         position: fixed;
-        top: 0;
+        top: var(--header-h, 70px);
         right: -100%;
         width: 75%;
-        height: 100vh;
+        height: calc(100vh - var(--header-h, 70px));
+        height: calc(100dvh - var(--header-h, 70px));
         background: var(--bg-light);
         flex-direction: column;
         justify-content: center;
@@ -1113,6 +1114,8 @@ html.is-telegram .hero {
         gap: 30px;
         transition: right 0.4s;
         border-left: 1px solid var(--border);
+        border-top: 1px solid var(--border);
+        z-index: 99;
     }
 
     nav ul.open { right: 0; }
@@ -1332,7 +1335,7 @@ html.is-telegram .hero {
 }
 
 /* В Telegram — отключаем, чтобы не лагало */
-html.is-telegram .season-layer { display: none; }
+/* html.is-telegram .season-layer { display: none; } */
 
 /* На мобильных — меньше частиц (управляется через JS) */
 @media (max-width: 600px) {

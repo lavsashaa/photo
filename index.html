@@ -163,6 +163,17 @@
         burger.addEventListener('click', () => menu.classList.toggle('open'));
     }
 
+    function updateHeaderHeight() {
+        const header = document.getElementById('header');
+        if (!header) return;
+        document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+    }
+    updateHeaderHeight();
+    window.addEventListener('resize', updateHeaderHeight);
+    window.addEventListener('orientationchange', function() {
+        setTimeout(updateHeaderHeight, 200);
+    });
+
     // ===== Скролл-эффект шапки =====
     const headerEl = document.getElementById('header');
     window.addEventListener('scroll', () => {
@@ -288,7 +299,7 @@
     // ===== СЕЗОННАЯ АНИМАЦИЯ =====
     (function() {
         // Не в Telegram и не при отключённых анимациях
-        if (document.documentElement.classList.contains('is-telegram')) return;
+        /* if (document.documentElement.classList.contains('is-telegram')) return; */
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         const layer = document.getElementById('seasonLayer');
