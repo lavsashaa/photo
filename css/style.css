@@ -821,10 +821,11 @@ footer .socials {
     font-size: 17px;
     color: var(--text);
     line-height: 1.7;
-    text-align: center;
+    text-align: left;
     margin-bottom: 70px;
     padding-bottom: 50px;
     border-bottom: 1px solid var(--border);
+    max-width: 100%;
 }
 
 .terms-block {
