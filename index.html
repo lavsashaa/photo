@@ -318,7 +318,7 @@
 
         // Сколько листьев и как быстро
         const isMobile = window.matchMedia('(max-width: 600px)').matches;
-        const COUNT = isMobile ? 6 : 12;
+        const COUNT = isMobile ? 10 : 16;
 
         for (let i = 0; i < COUNT; i++) {
             const leaf = document.createElement('span');
@@ -326,7 +326,7 @@
             leaf.className = 'season-leaf season-leaf--' + type;
 
             // Стартовая позиция — по всей ширине шапки + чуть за краями
-            const startX = Math.random() * 100; // vw
+            const startX = -10 + Math.random() * 110; // vw
             leaf.style.left = startX + '%';
 
             // Насколько далеко улетит по X и Y (в пикселях)
