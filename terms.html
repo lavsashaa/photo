@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        (function() {
+            const ua = navigator.userAgent || '';
+            const isTelegram = /Telegram/i.test(ua) ||
+                              (window.TelegramWebviewProxy !== undefined) ||
+                              (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData !== undefined);
+            if (isTelegram) {
+                document.documentElement.classList.add('is-telegram');
+            }
+        })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Условия съёмки — Александра Левина</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="header">
+    <a href="index.html" class="logo">LAVSASHA</a>
+    <nav>
+        <ul id="menu">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="portfolio.html">Портфолио</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+            <li><a href="terms.html" class="active">Условия</a></li>
+        </ul>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<section class="terms-section" style="padding-top: 140px;">
+    <div class="section-title">Правила</div>
+    <h1 class="section-heading">Условия съёмки</h1>
+
+    <div class="terms-content">
+
+        <p class="terms-intro">
+            Пожалуйста, ознакомьтесь с условиями до бронирования съёмки.
+            Отправляя заявку и подтверждая дату, вы соглашаетесь с пунктами ниже.
+        </p>
+
+        <article class="terms-block">
+            <h2><span class="terms-num">01</span> Авторские права</h2>
+            <p>Все фотографии, сделанные на съёмке, являются объектом авторского права Александры Левиной (далее — Фотограф) и охраняются законодательством РФ (ст. 1255, 1257 ГК РФ).</p>
+            <p>Передача исходных файлов (RAW, необработанных кадров) не производится. Клиент получает только готовые отретушированные фотографии.</p>
+        </article>
+
+        <article class="terms-block">
+            <h2><span class="terms-num">02</span> Публикация фотографий</h2>
+            <p>Фотограф вправе публиковать любые кадры со съёмки по своему усмотрению — в портфолио, социальных сетях, на сайте и в рекламных материалах.</p>
+            <p>Если вы не хотите, чтобы какие-либо кадры были опубликованы, это обсуждается <strong>до</strong> начала съёмки, а не после. В этом случае Фотограф обязуется не публиковать оговорённые кадры.</p>
+            <p class="terms-highlight">
+                Отказ от публикации — <strong>+30% к стоимости съёмки</strong>.
+                Наценка компенсирует то, что я не смогу использовать эти кадры в своём портфолио и рекламе.
+            </p>
+        </article>
+
+        <article class="terms-block">
+            <h2><span class="terms-num">03</span> Запрет на изменение фотографий</h2>
+            <p>Клиент не вправе:</p>
+            <ul class="terms-list">
+                <li>изменять, обрезать, накладывать фильтры, удалять водяные знаки и иным образом редактировать полученные фотографии;</li>
+                <li>использовать фотографии в коммерческих целях без письменного согласия Фотографа;</li>
+                <li>передавать фотографии третьим лицам для коммерческого использования;</li>
+                <li>присваивать авторство себе или третьим лицам.</li>
+            </ul>
+            <p>При публикации в социальных сетях желательно указывать авторство — отметку <strong>@l.a.v_sasha</strong> или ссылку на аккаунт Фотографа.</p>
+        </article>
+
+        <article class="terms-block">
+            <h2><span class="terms-num">04</span> Бронирование и оплата</h2>
+            <p>Дата съёмки бронируется после внесения предоплаты. Размер предоплаты и способ оплаты обсуждаются индивидуально.</p>
+            <p>Окончательный расчёт производится в день съёмки.</p>
+        </article>
+
+        <article class="terms-block">
+            <h2><span class="terms-num">05</span> Отмена и перенос</h2>
+            <p>Перенос съёмки возможен не позднее чем за 48 часов до назначенной даты — без потери предоплаты.</p>
+            <p>При отмене менее чем за 48 часов предоплата не возвращается.</p>
+            <p>Если съёмка отменяется по инициативе Фотографа (болезнь, форс-мажор) — предоплата возвращается в полном объёме или переносится на удобную дату.</p>
+        </article>
+
+        <article class="terms-block">
+            <h2><span class="terms-num">06</span> Сроки отдачи фотографий</h2>
+            <p>Готовые отретушированные фотографии передаются в срок до 7 дней с момента съёмки.</p>
+            <p>В отдельных случаях (отпуск, большая загрузка) срок может быть увеличен — об этом Фотограф предупреждает заранее.</p>
+        </article>
+
+        <article class="terms-block">
+            <h2><span class="terms-num">07</span> Согласие с условиями</h2>
+            <p>Отправляя заявку на съёмку и подтверждая дату в переписке, вы подтверждаете, что ознакомились с условиями и согласны с ними.</p>
+            <p>Если у вас остались вопросы — напишите мне до бронирования, я всё подробно расскажу.</p>
+        </article>
+
+        <div class="terms-cta">
+            <a href="contact.html" class="btn">Связаться со мной</a>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <div class="socials">
+        <a href="https://instagram.com/l.a.v_sasha" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://t.me/saaahv" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://vk.com/s.sahalev" target="_blank" rel="noopener">VK</a>
+    </div>
+    <p>© Александра Левина — Фотограф</p>
+    <p class="footer-links"><a href="terms.html">Условия съёмки</a></p>
+</footer>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+    // ===== Telegram =====
+    if (window.Telegram && window.Telegram.WebApp) {
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
+    }
+
+    // ===== Бургер =====
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    if (burger && menu) {
+        burger.addEventListener('click', () => menu.classList.toggle('open'));
+    }
+
+    // ===== Скролл-эффект шапки (только не в Telegram) =====
+    const headerEl = document.getElementById('header');
+    if (!document.documentElement.classList.contains('is-telegram')) {
+        window.addEventListener('scroll', () => {
+            if (headerEl) headerEl.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+    }
+
+    // ===== Анимация долгого нажатия =====
+    (function() {
+        const isTouch = window.matchMedia('(hover: none)').matches;
+        if (!isTouch) return;
+
+        const HOLD_TIME = 300;
+        const MOVE_LIMIT = 10;
+
+        function setupLongPress(selector) {
+            document.querySelectorAll(selector).forEach(function(el) {
+                let timer = null;
+                let startX = 0;
+                let startY = 0;
+                let active = false;
+
+                function clearPress(removeClass) {
+                    if (timer !== null) {
+                        clearTimeout(timer);
+                        timer = null;
+                    }
+                    active = false;
+                    if (removeClass) el.classList.remove('pressed');
+                }
+
+                function startPress(e) {
+                    if (e.pointerType && e.pointerType !== 'touch') return;
+                    if (e.isPrimary === false) return;
+
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    active = true;
+
+                    if (timer !== null) clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        if (active) el.classList.add('pressed');
+                        timer = null;
+                    }, HOLD_TIME);
+                }
+
+                function movePress(e) {
+                    if (!active) return;
+                    const dx = e.clientX - startX;
+                    const dy = e.clientY - startY;
+                    if ((dx * dx + dy * dy) > MOVE_LIMIT * MOVE_LIMIT) {
+                        clearPress(true);
+                    }
+                }
+
+                function endPress() {
+                    clearPress(true);
+                }
+
+                el.addEventListener('pointerdown', startPress, { passive: true });
+                el.addEventListener('pointermove', movePress, { passive: true });
+                el.addEventListener('pointerup', endPress, { passive: true });
+                el.addEventListener('pointercancel', endPress, { passive: true });
+                el.addEventListener('pointerleave', endPress, { passive: true });
+            });
+        }
+
+        setupLongPress('.btn');
+        setupLongPress('.social-btn');
+    })();
+
+    // ===== Блокировка контекстного меню =====
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.closest('a[href^="mailto:"]')) return;
+        if (e.target.closest('a[href^="tel:"]')) return;
+        if (e.target.closest('.terms-content')) return;
+        e.preventDefault();
+    });
+</script>
+
+</body>
+</html>

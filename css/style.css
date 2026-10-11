@@ -30,7 +30,11 @@ body {
 .contact-item > div,
 .about-text p,
 .about-lead,
-.contact-info > p {
+.contact-info > p,
+.contact-lead,
+.contact-terms-banner p,
+.terms-content p,
+.terms-content li {
     -webkit-touch-callout: default;
     -webkit-user-select: text;
     -moz-user-select: text;
@@ -163,8 +167,6 @@ nav a.active::after {
 }
 
 /* ===== ГЛАВНАЯ (HERO) ===== */
-/* Высота — ровно высота экрана. Без max-height, чтобы фото
-   заполняло весь экран на любом устройстве. */
 .hero {
     height: 100vh;
     height: 100svh;
@@ -179,8 +181,6 @@ nav a.active::after {
                 url('../Photos/IMG_1112.JPG') 20% center / cover no-repeat scroll;
 }
 
-/* Только для очень широких экранов ограничиваем высоту,
-   чтобы hero не был чрезмерно огромным на 2K/4K мониторах */
 @media (min-width: 1400px) {
     .hero {
         max-height: 1000px;
@@ -202,8 +202,10 @@ nav a.active::after {
 
 .hero h1 em {
     color: var(--accent);
-    font-style: italic;
+    font-style: normal;
     font-family: Georgia, serif;
+    transform: skewX(-12deg);
+    display: inline-block;
 }
 
 .hero p {
@@ -311,10 +313,12 @@ section {
 
 .about-text em {
     color: var(--accent);
-    font-style: italic;
+    font-style: normal;
     font-family: Georgia, serif;
     font-size: 1.05em;
     letter-spacing: 0.3px;
+    transform: skewX(-12deg);
+    display: inline-block;
 }
 
 /* ===== ФОТО В СТИЛЕ ПОЛАРОИД ===== */
@@ -423,13 +427,35 @@ section {
     z-index: 1;
 }
 
-.service-card h3 {
-    font-size: 26px;
+/* ===== ОФОРМЛЕНИЕ НАЗВАНИЙ УСЛУГ ===== */
+.service-head h3 {
+    font-size: 30px;
     font-weight: 300;
-    letter-spacing: 0.5px;
-    line-height: 1.25;
+    letter-spacing: 1px;
+    line-height: 1.15;
+    margin-bottom: 14px;
+    position: relative;
+    white-space: nowrap;
+}
+
+.service-name-accent {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    color: var(--accent);
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    font-size: 1.2em;
+}
+
+.service-name-plain {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 200;
     color: var(--text);
-    margin-bottom: 12px;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    font-size: 0.9em;
 }
 
 .service-subtitle {
@@ -552,6 +578,25 @@ section {
     z-index: 2;
 }
 
+/* Ссылка на условия под услугами */
+.services-terms-link {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.services-terms-link a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.3s;
+}
+
 /* ===== ГАЛЕРЕЯ ПОРТФОЛИО ===== */
 .gallery {
     display: grid;
@@ -615,18 +660,40 @@ section {
     margin: 0 auto;
 }
 
-.contact-info h3 {
-    font-size: 32px;
-    font-weight: 200;
-    margin-bottom: 20px;
+.contact-lead {
+    font-size: 17px !important;
+    color: var(--text) !important;
+    line-height: 1.7;
+    margin-bottom: 50px !important;
+    max-width: 420px;
 }
 
-.contact-info > p {
+/* Блок условий на странице контактов */
+.contact-terms-banner {
+    margin-bottom: 45px;
+    max-width: 440px;
+}
+
+.contact-terms-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.contact-terms-banner p {
     color: var(--text-muted);
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.7;
-    margin-bottom: 50px;
-    max-width: 380px;
+    margin: 0;
+}
+
+.contact-terms-banner a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.3s;
 }
 
 .contact-item {
@@ -681,12 +748,14 @@ section {
 
 .cta-title em {
     font-family: Georgia, 'Times New Roman', serif;
-    font-style: italic;
+    font-style: normal;
     font-weight: 400;
     color: #0f0f0f;
     text-transform: none;
     letter-spacing: 1px;
     padding-right: 8px;
+    transform: skewX(-12deg);
+    display: inline-block;
 }
 
 .cta-title.cta-long {
@@ -725,6 +794,127 @@ footer .socials {
     margin-bottom: 25px;
 }
 
+.footer-links {
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.3s;
+}
+
+/* ===== СТРАНИЦА УСЛОВИЙ (terms.html) ===== */
+.terms-section {
+    padding: 120px 50px 100px;
+}
+
+.terms-content {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.terms-intro {
+    font-size: 17px;
+    color: var(--text);
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: 70px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid var(--border);
+}
+
+.terms-block {
+    margin-bottom: 55px;
+    position: relative;
+}
+
+.terms-block h2 {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: var(--text);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    line-height: 1.3;
+}
+
+.terms-num {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: normal;
+    font-weight: 400;
+    color: var(--accent);
+    font-size: 20px;
+    letter-spacing: 1px;
+    transform: skewX(-12deg);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.terms-block p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 14px;
+}
+
+.terms-block p strong {
+    color: var(--text);
+    font-weight: 400;
+}
+
+.terms-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 18px;
+}
+
+.terms-list li {
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.terms-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-size: 9px;
+    line-height: 1.8;
+}
+
+.terms-highlight {
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: rgba(41, 157, 159, 0.08);
+    border-left: 2px solid var(--accent);
+    color: var(--text) !important;
+    font-size: 14.5px;
+    line-height: 1.7;
+}
+
+.terms-highlight strong {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.terms-cta {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid var(--border);
+}
+
 /* =====================================================
    HOVER — только для мыши
    ===================================================== */
@@ -745,6 +935,10 @@ footer .socials {
         box-shadow: 0 25px 60px rgba(41, 157, 159, 0.12);
     }
 
+    .service-card:hover .service-name-accent {
+        text-shadow: 0 0 20px rgba(41, 157, 159, 0.5);
+    }
+
     .service-btn:hover {
         background: var(--accent);
         color: var(--bg);
@@ -757,6 +951,12 @@ footer .socials {
     }
 
     .contact-item a:hover { color: var(--accent); }
+
+    .contact-terms-banner a:hover { color: var(--text); }
+
+    .services-terms-link a:hover { color: var(--text); }
+
+    .footer-links a:hover { color: var(--accent); }
 
     .cta-btn:hover {
         background: transparent;
@@ -861,25 +1061,18 @@ footer .socials {
 }
 
 /* =====================================================
-   TELEGRAM WEBVIEW — минимальные отличия от браузера
+   TELEGRAM WEBVIEW
    ===================================================== */
-
-/* Плавный скролл в WebView может «дёргать» — оставляем auto */
 html.is-telegram {
     scroll-behavior: auto;
 }
 
-/* blur в шапке — самая тяжёлая операция для WebView.
-   Заменяем на плотный однотонный фон. */
 html.is-telegram header {
     background: rgba(41, 157, 159, 0.5);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
 
-/* Hero: высота через JS-переменную + contain, чтобы
-   адресная строка Telegram не пересчитывала layout.
-   Фон, анимации, hover — как в браузере. */
 html.is-telegram .hero {
     height: var(--hero-height, 100svh);
     min-height: 0;
@@ -905,7 +1098,6 @@ html.is-telegram .hero {
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
     }
-
 
     nav ul {
         position: fixed;
@@ -942,6 +1134,11 @@ html.is-telegram .hero {
     .about-text h2 { font-size: 34px; }
     .about-lead { font-size: 16px !important; }
 
+    .contact-lead {
+        font-size: 15px !important;
+        margin-bottom: 35px !important;
+    }
+
     .services-section { padding: 90px 25px; }
 
     .cta { padding: 80px 20px; }
@@ -961,6 +1158,15 @@ html.is-telegram .hero {
     }
 
     footer { padding: 40px 20px; }
+
+    /* Terms адаптив */
+    .terms-section { padding: 90px 25px 70px; }
+    .terms-intro { font-size: 15px; margin-bottom: 50px; padding-bottom: 35px; }
+    .terms-block { margin-bottom: 40px; }
+    .terms-block h2 { font-size: 19px; }
+    .terms-block p,
+    .terms-list li { font-size: 14px; }
+    .terms-cta { margin-top: 55px; padding-top: 40px; }
 }
 
 @media (max-width: 600px) {
@@ -971,7 +1177,9 @@ html.is-telegram .hero {
     .services-section { padding: 70px 20px; }
 
     .service-card { padding: 35px 22px 28px; }
-    .service-card h3 { font-size: 20px; }
+    .service-head h3 { font-size: 20px; letter-spacing: 0.5px; }
+    .service-name-accent { font-size: 1.15em; letter-spacing: 1px; }
+    .service-name-plain { font-size: 0.9em; letter-spacing: 1px; }
     .service-number { font-size: 40px; top: 18px; right: 18px; }
 
     .service-footer {
@@ -982,6 +1190,12 @@ html.is-telegram .hero {
 
     .service-price { font-size: 26px; }
     .service-btn { text-align: center; }
+
+    .services-terms-link {
+        margin-top: 35px;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+    }
 
     section {
         padding-left: 10px;
@@ -1013,6 +1227,19 @@ html.is-telegram .hero {
         text-align: center;
         min-width: 0;
     }
+
+    .contact-terms-banner {
+        margin-bottom: 35px;
+    }
+    .contact-terms-banner p { font-size: 13px; }
+
+    /* Terms адаптив */
+    .terms-section { padding: 70px 20px 55px; }
+    .terms-block h2 { font-size: 17px; gap: 10px; }
+    .terms-num { font-size: 17px; }
+    .terms-block p,
+    .terms-list li { font-size: 13.5px; line-height: 1.7; }
+    .terms-list li { padding-left: 22px; margin-bottom: 10px; }
 }
 
 @media (max-width: 380px) {
