@@ -20,6 +20,7 @@
 <body>
 
 <header id="header">
+    <div class="season-layer" id="seasonLayer" aria-hidden="true"></div>
     <a href="index.html" class="logo">LAVSASHA</a>
         <nav>
         <ul id="menu">
@@ -177,6 +178,61 @@
         if (e.target.closest('.contact-item')) return;
         e.preventDefault();
     });
+</script>
+
+<script>
+    // ===== СЕЗОННАЯ АНИМАЦИЯ =====
+    (function() {
+        // Не в Telegram и не при отключённых анимациях
+        if (document.documentElement.classList.contains('is-telegram')) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const layer = document.getElementById('seasonLayer');
+        if (!layer) return;
+
+        // Определяем сезон
+        const month = new Date().getMonth(); // 0 = январь
+        let season = null;
+
+        if (month >= 8 && month <= 10) season = 'autumn';        // сен–ноя
+        else if (month === 11 || month <= 1) season = 'winter';  // дек–фев
+        else if (month >= 2 && month <= 4) season = 'spring';    // мар–май
+        // лето (май–авг) — без анимации
+
+        if (season !== 'autumn') return; // пока только осень
+
+        // Сколько листьев и как быстро
+        const isMobile = window.matchMedia('(max-width: 600px)').matches;
+        const COUNT = isMobile ? 6 : 12;
+
+        for (let i = 0; i < COUNT; i++) {
+            const leaf = document.createElement('span');
+            const type = (i % 3) + 1; // 1, 2, 3 по кругу
+            leaf.className = 'season-leaf season-leaf--' + type;
+
+            // Стартовая позиция — по всей ширине шапки + чуть за краями
+            const startX = Math.random() * 100; // vw
+            leaf.style.left = startX + '%';
+
+            // Насколько далеко улетит по X и Y (в пикселях)
+            const headerHeight = layer.offsetHeight || 70;
+            const travelX = 80 + Math.random() * 180;   // вправо
+            const travelY = headerHeight + 60;           // вниз, за пределы шапки
+
+            leaf.style.setProperty('--leaf-x', travelX + 'px');
+            leaf.style.setProperty('--leaf-y', travelY + 'px');
+
+            // Скорость и задержка
+            const duration = 6 + Math.random() * 5;      // 6–11 сек
+            leaf.style.animationDuration = duration + 's';
+            leaf.style.animationDelay = (-Math.random() * duration) + 's';
+
+            // Прозрачность
+            leaf.style.setProperty('--leaf-opacity', 0.6 + Math.random() * 0.4);
+
+            layer.appendChild(leaf);
+        }
+    })();
 </script>
 
 </body>

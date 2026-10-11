@@ -1250,3 +1250,91 @@ html.is-telegram .hero {
         padding: 10px 4px;
     }
 }
+
+/* =====================================================
+   СЕЗОННЫЕ АНИМАЦИИ
+   ===================================================== */
+.season-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Общая частица — контейнер, который движется по диагонали */
+.season-leaf {
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    will-change: transform, opacity;
+    animation-name: leaf-fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Кленовый — крупнее всех */
+.season-leaf--1 {
+    width: 38px;
+    height: 38px;
+    background-image: url('../Photos/leaves/leaf-1.svg');
+}
+
+/* Дубовый — средний */
+.season-leaf--2 {
+    width: 30px;
+    height: 30px;
+    background-image: url('../Photos/leaves/leaf-2.svg');
+}
+
+/* Резной — чуть меньше */
+.season-leaf--3 {
+    width: 26px;
+    height: 26px;
+    background-image: url('../Photos/leaves/leaf-3.svg');
+}
+
+/* Диагональное падение слева-сверху вправо-вниз с вращением */
+@keyframes leaf-fall {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: var(--leaf-opacity, 0.9);
+    }
+    50% {
+        transform: translate(
+            calc(var(--leaf-x, 200px) * 0.5),
+            calc(var(--leaf-y, 100px) * 0.55)
+        ) rotate(180deg);
+    }
+    90% {
+        opacity: var(--leaf-opacity, 0.9);
+    }
+    100% {
+        transform: translate(
+            var(--leaf-x, 200px),
+            var(--leaf-y, 100px)
+        ) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Уважение к настройкам пользователя */
+@media (prefers-reduced-motion: reduce) {
+    .season-layer { display: none; }
+}
+
+/* В Telegram — отключаем, чтобы не лагало */
+html.is-telegram .season-layer { display: none; }
+
+/* На мобильных — меньше частиц (управляется через JS) */
+@media (max-width: 600px) {
+    .season-leaf { opacity: 0.85; }
+}
